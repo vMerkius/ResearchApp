@@ -1,0 +1,69 @@
+main {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+table {
+  width: 60%;
+  border-collapse: collapse;
+}
+
+table th {
+  background-color: #f2f2f2;
+  text-align: left;
+  padding: 8px;
+  cursor: pointer;
+}
+
+table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+.table td.adres {
+  width: 40%;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.remove-btn {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 16px;
+  margin: 4px 2px;
+}
+.edit-btn {
+  background-color: lightblue;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 16px;
+  margin: 4px 2px;
+}
+
+.surname {
+  width: 25%;
+}
+.name {
+  width: 25%;
+}

@@ -1,0 +1,97 @@
+{
+  "pacjenci": [
+    {
+      "id": 1,
+      "imie": "Jan",
+      "nazwisko": "Kowalski",
+      "adres": "ul. Kwiatowa 12, 00-111 Warszawa"
+    },
+    {
+      "id": 2,
+      "imie": "Anna",
+      "nazwisko": "Nowak",
+      "adres": "ul. Słoneczna 25, 00-222 Warszawa"
+    },
+    {
+      "imie": "Marek",
+      "nazwisko": "Dobrodziejski",
+      "adres": "ul. Księżycowa 15, 16-400 Suwałki",
+      "id": 3
+    },
+    {
+      "imie": "Adam",
+      "nazwisko": "Dwa",
+      "adres": "ul. Księżycowa 15, 16-400 Suwałki",
+      "id": 4
+    },
+    {
+      "imie": "Adam",
+      "nazwisko": "Dwa",
+      "adres": "ul. Księżycowa 15, 16-400 Suwałki",
+      "id": 5
+    },
+    {
+      "imie": "Marek",
+      "nazwisko": "Dobrodziejski6",
+      "adres": "ul. Księżycowa 15, 16-400 Suwałki",
+      "id": 6
+    }
+  ],
+  "projekty": [
+    {
+      "id": 1,
+      "nazwa": "Badanie A",
+      "opis": "Opis badania A"
+    },
+    {
+      "id": 2,
+      "nazwa": "Badanie B",
+      "opis": "Opis badania B"
+    }
+  ],
+  "powiazania": [
+    {
+      "id": 1,
+      "pacjentId": 1,
+      "projektId": 1,
+      "zgoda": true
+    },
+    {
+      "id": 2,
+      "pacjentId": 2,
+      "projektId": 2,
+      "zgoda": false
+    }
+  ],
+  "zlecenia": [
+    {
+      "id": 1,
+      "pacjentId": 1,
+      "projektId": 1,
+      "badania": [
+        {
+          "id": 1,
+          "nazwa": "Badanie krwi",
+          "wynik": "W normie"
+        },
+        {
+          "id": 2,
+          "nazwa": "Badanie EKG",
+          "wynik": "Nieprawidłowe"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "pacjentId": 2,
+      "projektId": 2,
+      "badania": [
+        {
+          "id": 3,
+          "nazwa": "Badanie RTG",
+          "wynik": "W normie"
+        }
+      ]
+    }
+  ]
+}
