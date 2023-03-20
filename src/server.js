@@ -22,4 +22,30 @@ const getProjects = async () => {
   }
 };
 
-export { getPatients, getProjects };
+const addPatient = async (formData) => {
+  try {
+    const response = await axios.post(
+      "http://localhost:8000/pacjenci",
+      formData
+    );
+    console.log("Dodano pacjenta:", response.data);
+    alert("Dodano pacjenta");
+    return formData;
+  } catch (error) {
+    console.error("Błąd podczas dodawania pacjenta:", error);
+  }
+};
+
+const deletePatient = (id) => {
+  return axios
+    .delete(`http://localhost:8000/pacjenci/${id}`)
+    .then((res) => res.data);
+};
+
+const updatePatient = (patient) => {
+  return axios
+    .put(`http://localhost:8000/pacjenci/${patient.id}`, patient)
+    .then((res) => res.data);
+};
+
+export { getPatients, getProjects, addPatient, deletePatient, updatePatient };

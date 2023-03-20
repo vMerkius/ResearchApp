@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { addPatient } from "../server";
 
 const AddPatient = ({ onAddPatient }) => {
   const [formData, setFormData] = useState({
@@ -14,19 +14,12 @@ const AddPatient = ({ onAddPatient }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/pacjenci",
-        formData
-      );
-      console.log("Dodano pacjenta:", response.data);
-      setFormData({ imie: "", nazwisko: "", adres: "" });
-
-      onAddPatient(response.data);
-      alert("Dodano pacjenta");
-    } catch (error) {
-      console.error("Błąd podczas dodawania pacjenta:", error);
-    }
+    const patient = addPatient(formData).then(() => {
+      if (patient) {
+        setFormData({ imie: "", nazwisko: "", adres: "" });
+        onAddPatient(formData);
+      }
+    });
   };
 
   return (

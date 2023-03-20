@@ -13,28 +13,10 @@
       "adres": "ul. Słoneczna 25, 00-222 Warszawa"
     },
     {
-      "imie": "Marek",
-      "nazwisko": "Dobrodziejski",
-      "adres": "ul. Księżycowa 15, 16-400 Suwałki",
-      "id": 3
-    },
-    {
-      "imie": "Adam",
-      "nazwisko": "Dwa",
-      "adres": "ul. Księżycowa 15, 16-400 Suwałki",
-      "id": 4
-    },
-    {
-      "imie": "Adam",
-      "nazwisko": "Dwa",
-      "adres": "ul. Księżycowa 15, 16-400 Suwałki",
-      "id": 5
-    },
-    {
+      "id": 3,
       "imie": "Marek",
       "nazwisko": "Dobrodziejski6",
-      "adres": "ul. Księżycowa 15, 16-400 Suwałki",
-      "id": 6
+      "adres": "ul. Księżycowa 15, 16-400 Suwałki"
     }
   ],
   "projekty": [
