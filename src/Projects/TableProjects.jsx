@@ -1,16 +1,17 @@
 import { deletePatient, updatePatient } from "../server";
 import { useEffect, useState } from "react";
 import "./projects.css";
+import EditProject from "./EditProject";
+import { updateProject } from "../server";
 
 const TableProjects = ({ projects, setProjects }) => {
-  console.log(projects);
   const [sortColumn, setSortColumn] = useState("id");
   const [sortOrder, setSortOrder] = useState("asc");
   const [showEdit, setShowEdit] = useState(false);
   const [formData, setFormData] = useState({
     id: 0,
-    nazwaProjektu: "",
-    opisProjektu: "",
+    nazwa: "",
+    opis: "",
     liczbaUczestnikow: 0,
   });
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,42 +25,48 @@ const TableProjects = ({ projects, setProjects }) => {
     return data.slice(startIndex, endIndex);
   };
 
+  //tablica odpowiedzialna za zwrocenie jedynie projektow danej strony
   const displayedProjects = paginate(projects, currentPage, itemsPerPage);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleDelete = (id) => {
-    // deletePatient(id).then(() => {
-    //   setProjects(projects.filter((project) => project.id !== id));
-    // });
+    deletePatient(id).then(() => {
+      setProjects(projects.filter((project) => project.id !== id));
+    });
   };
+
   const handleEdit = (project) => {
     setFormData({
       id: project.id,
-      nazwaProjektu: project.nazwaProjektu,
-      opisProjektu: project.opisProjektu,
+      nazwa: project.nazwa,
+      opis: project.opis,
       liczbaUczestnikow: 0,
     });
     setShowEdit(!showEdit);
   };
+
+  //metoda odpowiedzialna za update projektu po wcisnieciu edytuj
   const handleSubmit = async (e) => {
     e.preventDefault();
     const updatedProject = {
       id: formData.id,
-      nazwaProjektu: formData.nazwaProjektu,
-      opisProjektu: formData.opisProjektu,
+      nazwa: formData.nazwa,
+      opis: formData.opis,
       liczbaUczestnikow: 0,
     };
-    const updatedProjectData = await updatePatient(updatedProject);
+    const updatedProjectData = await updateProject(updatedProject);
     setProjects(
       projects.map((p) =>
         p.id === updatedProjectData.id ? updatedProjectData : p
       )
     );
-    setFormData({ nazwaProjektu: "", opisProjektu: "", liczbaUczestnikow: 0 });
+    setFormData({ nazwa: "", opis: "", liczbaUczestnikow: 0 });
     setShowEdit(false);
   };
+
+  
   const sortData = (column) => {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
     const sortedData = [...projects].sort((a, b) => {
@@ -71,7 +78,6 @@ const TableProjects = ({ projects, setProjects }) => {
       }
       return 0;
     });
-
     setProjects(sortedData);
     setSortColumn(column);
     setSortOrder(newSortOrder);
@@ -85,17 +91,14 @@ const TableProjects = ({ projects, setProjects }) => {
             <th onClick={() => sortData("id")}>
               Id {sortColumn === "id" && (sortOrder === "asc" ? "▲" : "▼")}
             </th>
-            <th onClick={() => sortData("imie")}>
+            <th onClick={() => sortData("nazwa")}>
               Nazwa{" "}
-              {sortColumn === "nazwaProjektu" &&
-                (sortOrder === "asc" ? "▲" : "▼")}
+              {sortColumn === "nazwa" && (sortOrder === "asc" ? "▲" : "▼")}
             </th>
-            <th onClick={() => sortData("nazwisko")}>
-              Opis{" "}
-              {sortColumn === "opisProjektu" &&
-                (sortOrder === "asc" ? "▲" : "▼")}
+            <th onClick={() => sortData("opis")}>
+              Opis {sortColumn === "opis" && (sortOrder === "asc" ? "▲" : "▼")}
             </th>
-            <th onClick={() => sortData("adres")}>
+            <th onClick={() => sortData("liczbaUczestnikow")}>
               Liczba uczestnikow{" "}
               {sortColumn === "liczbaUczestnikow" &&
                 (sortOrder === "asc" ? "▲" : "▼")}
@@ -151,14 +154,14 @@ const TableProjects = ({ projects, setProjects }) => {
           &gt;
         </button>
       </div>
-      {/* {showEdit && (
-        <EditPatients
+      {showEdit && (
+        <EditProject
           formData={formData}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           setShowEdit={setShowEdit}
         />
-      )} */}
+      )}
     </>
   );
 };

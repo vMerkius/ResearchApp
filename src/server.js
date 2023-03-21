@@ -11,16 +11,6 @@ const getPatients = async () => {
     return [];
   }
 };
-const getProjects = async () => {
-  try {
-    const res = await axios.get("http://localhost:8000/projekty");
-    const projects = res.data;
-    return projects;
-  } catch (error) {
-    console.error("Błąd podczas pobierania projektów:", error);
-    return [];
-  }
-};
 
 const addPatient = async (formData) => {
   try {
@@ -38,7 +28,7 @@ const addPatient = async (formData) => {
 
 const deletePatient = (id) => {
   return axios
-    .delete(`http://localhost:8000/pacjenci/${id}`)
+    .delete(`http://localhost:8000/projekty/${id}`)
     .then((res) => res.data);
 };
 
@@ -48,4 +38,60 @@ const updatePatient = (patient) => {
     .then((res) => res.data);
 };
 
-export { getPatients, getProjects, addPatient, deletePatient, updatePatient };
+const getProjects = async () => {
+  try {
+    const res = await axios.get("http://localhost:8000/projekty");
+    const projects = res.data;
+    return projects;
+  } catch (error) {
+    console.error("Błąd podczas pobierania projektów:", error);
+    return [];
+  }
+};
+
+const addProject = async (formData) => {
+  try {
+    const response = await axios.post(
+      "http://localhost:8000/projekty",
+      formData
+    );
+    console.log("Dodano projekt:", response.data);
+    alert("Dodano projekt");
+    return formData;
+  } catch (error) {
+    console.error("Błąd podczas dodawania projektu:", error);
+  }
+};
+const deleteProject = (id) => {
+  return axios
+    .delete(`http://localhost:8000/projekty/${id}`)
+    .then((res) => res.data);
+};
+
+const updateProject = (project) => {
+  return axios
+    .put(`http://localhost:8000/projekty/${project.id}`, project)
+    .then((res) => res.data);
+};
+const getPeopleInProject = async () => {
+  try {
+    const res = await axios.get("http://localhost:8000/powiazania");
+    const connections = res.data;
+    return connections;
+  } catch (error) {
+    console.error("Błąd podczas pobierania powiazan:", error);
+    return [];
+  }
+};
+
+export {
+  getPatients,
+  getProjects,
+  addPatient,
+  deletePatient,
+  updatePatient,
+  addProject,
+  deleteProject,
+  updateProject,
+  getPeopleInProject,
+};

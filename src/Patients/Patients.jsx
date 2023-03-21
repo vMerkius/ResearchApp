@@ -11,6 +11,7 @@ const Patients = () => {
   const [filteredPatients, setFilteredPatients] = useState([]);
   const [findSurname, setFindSurname] = useState("");
 
+  //wczytanie pacjentow przy mountingu komponentu
   const updatePatientsList = () => {
     getPatients()
       .then((data) => {
@@ -21,11 +22,12 @@ const Patients = () => {
         console.error("Błąd podczas pobierania pacjentów:", error);
       });
   };
-
   useEffect(() => {
     updatePatientsList();
   }, []);
 
+
+  //przefiltrowanie tablicy pacjentow, z wybrana nazwa, wysylanej do komponentu TablePatients
   useEffect(() => {
     if (findSurname !== "") {
       const filtered = patients.filter((patient) => {

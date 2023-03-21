@@ -24,6 +24,7 @@ const TablePatients = ({ patients, setPatients }) => {
     return data.slice(startIndex, endIndex);
   };
 
+  //tablica odpowiedzialna za zwrocenie jedynie pacjentow danej strony
   const displayedPatients = paginate(patients, currentPage, itemsPerPage);
 
   const handleChange = (e) => {
@@ -43,6 +44,8 @@ const TablePatients = ({ patients, setPatients }) => {
     });
     setShowEdit(!showEdit);
   };
+
+  //metoda odpowiedzialna za update pacjenta po wcisnieciu edytuj
   const handleSubmit = async (e) => {
     e.preventDefault();
     const updatedPatient = {
@@ -60,6 +63,7 @@ const TablePatients = ({ patients, setPatients }) => {
     setFormData({ imie: "", nazwisko: "", adres: "" });
     setShowEdit(false);
   };
+
   const sortData = (column) => {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
     const sortedData = [...patients].sort((a, b) => {
