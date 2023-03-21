@@ -17,18 +17,74 @@
       "imie": "Marek",
       "nazwisko": "Dobrodziejski6",
       "adres": "ul. Księżycowa 15, 16-400 Suwałki"
+    },
+    {
+      "imie": "dd",
+      "nazwisko": "dd",
+      "adres": "dd",
+      "id": 6
+    },
+    {
+      "imie": "ff",
+      "nazwisko": "ff",
+      "adres": "ff",
+      "id": 7
+    },
+    {
+      "imie": "gg",
+      "nazwisko": "gg",
+      "adres": "gg",
+      "id": 8
+    },
+    {
+      "imie": "hh",
+      "nazwisko": "hh",
+      "adres": "hh",
+      "id": 9
+    },
+    {
+      "imie": "gg",
+      "nazwisko": "gg",
+      "adres": "gg",
+      "id": 10
+    },
+    {
+      "id": 11,
+      "imie": "ttttttt",
+      "nazwisko": "ttt",
+      "adres": "tt"
+    },
+    {
+      "imie": "gg",
+      "nazwisko": "gg",
+      "adres": "gg",
+      "id": 12
+    },
+    {
+      "imie": "jmjj",
+      "nazwisko": "kk",
+      "adres": "kk",
+      "id": 13
+    },
+    {
+      "imie": "Marek",
+      "nazwisko": "Dobr2",
+      "adres": "gdzies",
+      "id": 14
     }
   ],
   "projekty": [
     {
       "id": 1,
       "nazwa": "Badanie A",
-      "opis": "Opis badania A"
+      "opis": "Opis badania A",
+      "liczbaUczestnikow": 0
     },
     {
       "id": 2,
       "nazwa": "Badanie B",
-      "opis": "Opis badania B"
+      "opis": "Opis badania B",
+      "liczbaUczestnikow": 0
     }
   ],
   "powiazania": [

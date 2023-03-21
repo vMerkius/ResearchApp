@@ -1,22 +1,22 @@
 import { deletePatient, updatePatient } from "../server";
 import { useEffect, useState } from "react";
-import "./patients.css";
-import EditPatients from "./EditPatients";
+import "./projects.css";
 
-const TablePatients = ({ patients, setPatients }) => {
+const TableProjects = ({ projects, setProjects }) => {
+  console.log(projects);
   const [sortColumn, setSortColumn] = useState("id");
   const [sortOrder, setSortOrder] = useState("asc");
   const [showEdit, setShowEdit] = useState(false);
   const [formData, setFormData] = useState({
     id: 0,
-    imie: "",
-    nazwisko: "",
-    adres: "",
+    nazwaProjektu: "",
+    opisProjektu: "",
+    liczbaUczestnikow: 0,
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
-  const totalPages = Math.ceil(patients.length / itemsPerPage);
+  const totalPages = Math.ceil(projects.length / itemsPerPage);
 
   const paginate = (data, page, itemsPerPage) => {
     const startIndex = (page - 1) * itemsPerPage;
@@ -24,45 +24,45 @@ const TablePatients = ({ patients, setPatients }) => {
     return data.slice(startIndex, endIndex);
   };
 
-  const displayedPatients = paginate(patients, currentPage, itemsPerPage);
+  const displayedProjects = paginate(projects, currentPage, itemsPerPage);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleDelete = (id) => {
-    deletePatient(id).then(() => {
-      setPatients(patients.filter((patient) => patient.id !== id));
-    });
+    // deletePatient(id).then(() => {
+    //   setProjects(projects.filter((project) => project.id !== id));
+    // });
   };
-  const handleEdit = (patient) => {
+  const handleEdit = (project) => {
     setFormData({
-      id: patient.id,
-      imie: patient.imie,
-      nazwisko: patient.nazwisko,
-      adres: patient.adres,
+      id: project.id,
+      nazwaProjektu: project.nazwaProjektu,
+      opisProjektu: project.opisProjektu,
+      liczbaUczestnikow: 0,
     });
     setShowEdit(!showEdit);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const updatedPatient = {
+    const updatedProject = {
       id: formData.id,
-      imie: formData.imie,
-      nazwisko: formData.nazwisko,
-      adres: formData.adres,
+      nazwaProjektu: formData.nazwaProjektu,
+      opisProjektu: formData.opisProjektu,
+      liczbaUczestnikow: 0,
     };
-    const updatedPatientData = await updatePatient(updatedPatient);
-    setPatients(
-      patients.map((p) =>
-        p.id === updatedPatientData.id ? updatedPatientData : p
+    const updatedProjectData = await updatePatient(updatedProject);
+    setProjects(
+      projects.map((p) =>
+        p.id === updatedProjectData.id ? updatedProjectData : p
       )
     );
-    setFormData({ imie: "", nazwisko: "", adres: "" });
+    setFormData({ nazwaProjektu: "", opisProjektu: "", liczbaUczestnikow: 0 });
     setShowEdit(false);
   };
   const sortData = (column) => {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
-    const sortedData = [...patients].sort((a, b) => {
+    const sortedData = [...projects].sort((a, b) => {
       if (a[column] < b[column]) {
         return sortOrder === "asc" ? -1 : 1;
       }
@@ -72,7 +72,7 @@ const TablePatients = ({ patients, setPatients }) => {
       return 0;
     });
 
-    setPatients(sortedData);
+    setProjects(sortedData);
     setSortColumn(column);
     setSortOrder(newSortOrder);
   };
@@ -86,36 +86,40 @@ const TablePatients = ({ patients, setPatients }) => {
               Id {sortColumn === "id" && (sortOrder === "asc" ? "▲" : "▼")}
             </th>
             <th onClick={() => sortData("imie")}>
-              Imię {sortColumn === "imie" && (sortOrder === "asc" ? "▲" : "▼")}
+              Nazwa{" "}
+              {sortColumn === "nazwaProjektu" &&
+                (sortOrder === "asc" ? "▲" : "▼")}
             </th>
             <th onClick={() => sortData("nazwisko")}>
-              Nazwisko{" "}
-              {sortColumn === "nazwisko" && (sortOrder === "asc" ? "▲" : "▼")}
+              Opis{" "}
+              {sortColumn === "opisProjektu" &&
+                (sortOrder === "asc" ? "▲" : "▼")}
             </th>
             <th onClick={() => sortData("adres")}>
-              Adres{" "}
-              {sortColumn === "adres" && (sortOrder === "asc" ? "▲" : "▼")}
+              Liczba uczestnikow{" "}
+              {sortColumn === "liczbaUczestnikow" &&
+                (sortOrder === "asc" ? "▲" : "▼")}
             </th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          {displayedPatients.map((patient) => (
-            <tr key={patient.id}>
-              <td className="id">{patient.id}</td>
-              <td className="name">{patient.imie}</td>
-              <td className="surname">{patient.nazwisko}</td>
-              <td className="adres">{patient.adres}</td>
+          {displayedProjects.map((project) => (
+            <tr key={project.id}>
+              <td className="id">{project.id}</td>
+              <td className="name">{project.nazwa}</td>
+              <td className="surname">{project.opis}</td>
+              <td className="adres">{project.liczbaUczestnikow}</td>
               <td className="buttons">
                 <button
                   className="edit-btn"
-                  onClick={() => handleEdit(patient)}
+                  onClick={() => handleEdit(project)}
                 >
                   Edytuj
                 </button>
                 <button
                   className="remove-btn"
-                  onClick={() => handleDelete(patient.id)}
+                  onClick={() => handleDelete(project.id)}
                 >
                   Usuń
                 </button>
@@ -147,16 +151,16 @@ const TablePatients = ({ patients, setPatients }) => {
           &gt;
         </button>
       </div>
-      {showEdit && (
+      {/* {showEdit && (
         <EditPatients
           formData={formData}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           setShowEdit={setShowEdit}
         />
-      )}
+      )} */}
     </>
   );
 };
 
-export default TablePatients;
+export default TableProjects;
