@@ -24,13 +24,6 @@ const Projects = () => {
       });
   };
   useEffect(() => {
-    getPeopleInProject()
-      .then((data) => {
-        setConnections(data);
-      })
-      .catch((error) => {
-        console.error("Blad podczas pobierania powiazan", error);
-      });
     updateProjectsList();
   }, []);
   //przefiltrowanie tablicy projektow, z wybrana nazwa, wysylanej do komponentu TableProjects

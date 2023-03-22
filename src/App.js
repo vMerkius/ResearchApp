@@ -1,11 +1,10 @@
-import getPatients from "./server";
-import { useEffect, useState } from "react";
 import Summary from "./Summary";
 import Patients from "./Patients/Patients";
 import Projects from "./Projects/Projects";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./Header/Header";
+import ProjectDetails from "./Projects/ProjectDetails";
 
 const App = () => {
   return (
@@ -16,6 +15,7 @@ const App = () => {
         <Route path="/" element={<Summary />} />
         <Route path="/patients" element={<Patients />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:id" element={<ProjectDetails />} />
       </Routes>
     </BrowserRouter>
   );

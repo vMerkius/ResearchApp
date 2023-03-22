@@ -5,7 +5,7 @@ const AddProject = ({ onAddPatient }) => {
   const [formData, setFormData] = useState({
     nazwa: "",
     opis: "",
-    liczbaUczestnikow: 0,
+    uczestnicy: [],
   });
 
   const handleChange = (e) => {
@@ -16,7 +16,7 @@ const AddProject = ({ onAddPatient }) => {
     e.preventDefault();
     const project = addProject(formData).then(() => {
       if (project) {
-        setFormData({ imie: "", nazwisko: "", adres: "" });
+        setFormData({ nazwa: "", opis: "" });
         onAddPatient(formData);
       }
     });

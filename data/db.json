@@ -78,27 +78,37 @@
       "id": 1,
       "nazwa": "Badanie A",
       "opis": "Opis badania A",
-      "liczbaUczestnikow": 0
+      "liczbaUczestnikow": 0,
+      "uczestnicy": [
+        {
+          "pacjentId": 1,
+          "zgoda": true
+        },
+        {
+          "pacjentId": 2,
+          "zgoda": false
+        },
+        {
+          "pacjentId": 3,
+          "zgoda": true
+        }
+      ]
     },
     {
       "id": 2,
       "nazwa": "Badanie B",
-      "opis": "Opis badania B",
-      "liczbaUczestnikow": 0
-    }
-  ],
-  "powiazania": [
-    {
-      "id": 1,
-      "pacjentId": 1,
-      "projektId": 1,
-      "zgoda": true
+      "opis": "Opis badania HJ"
     },
     {
-      "id": 2,
-      "pacjentId": 2,
-      "projektId": 2,
-      "zgoda": false
+      "id": 3,
+      "nazwa": "Badanie C",
+      "opis": "Opis badania L",
+      "uczestnicy": [
+        {
+          "pacjentId": 2,
+          "zgoda": true
+        }
+      ]
     }
   ],
   "zlecenia": [

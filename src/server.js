@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 
 const getPatients = async () => {
@@ -49,6 +48,17 @@ const getProjects = async () => {
   }
 };
 
+const getSingleProject = async (id) => {
+  try {
+    const res = await axios.get(`http://localhost:8000/projekty/${id}`);
+    const project = res.data;
+    return project;
+  } catch (error) {
+    console.error("Błąd podczas pobierania projektu:", error);
+    return [];
+  }
+};
+
 const addProject = async (formData) => {
   try {
     const response = await axios.post(
@@ -73,16 +83,6 @@ const updateProject = (project) => {
     .put(`http://localhost:8000/projekty/${project.id}`, project)
     .then((res) => res.data);
 };
-const getPeopleInProject = async () => {
-  try {
-    const res = await axios.get("http://localhost:8000/powiazania");
-    const connections = res.data;
-    return connections;
-  } catch (error) {
-    console.error("Błąd podczas pobierania powiazan:", error);
-    return [];
-  }
-};
 
 export {
   getPatients,
@@ -93,5 +93,5 @@ export {
   addProject,
   deleteProject,
   updateProject,
-  getPeopleInProject,
+  getSingleProject,
 };

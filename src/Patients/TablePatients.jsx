@@ -1,5 +1,5 @@
 import { deletePatient, updatePatient } from "../server";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./patients.css";
 import EditPatients from "./EditPatients";
 

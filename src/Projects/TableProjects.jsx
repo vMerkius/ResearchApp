@@ -1,8 +1,9 @@
-import { deletePatient, updatePatient } from "../server";
-import { useEffect, useState } from "react";
+import { deletePatient } from "../server";
+import { useState } from "react";
 import "./projects.css";
 import EditProject from "./EditProject";
 import { updateProject } from "../server";
+import { Link } from "react-router-dom";
 
 const TableProjects = ({ projects, setProjects }) => {
   const [sortColumn, setSortColumn] = useState("id");
@@ -12,7 +13,7 @@ const TableProjects = ({ projects, setProjects }) => {
     id: 0,
     nazwa: "",
     opis: "",
-    liczbaUczestnikow: 0,
+    uczestnicy: [],
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -42,7 +43,7 @@ const TableProjects = ({ projects, setProjects }) => {
       id: project.id,
       nazwa: project.nazwa,
       opis: project.opis,
-      liczbaUczestnikow: 0,
+      uczestnicy: project.uczestnicy,
     });
     setShowEdit(!showEdit);
   };
@@ -54,19 +55,19 @@ const TableProjects = ({ projects, setProjects }) => {
       id: formData.id,
       nazwa: formData.nazwa,
       opis: formData.opis,
-      liczbaUczestnikow: 0,
+      uczestnicy: formData.uczestnicy,
     };
+    console.log(updatedProject.id);
     const updatedProjectData = await updateProject(updatedProject);
     setProjects(
       projects.map((p) =>
         p.id === updatedProjectData.id ? updatedProjectData : p
       )
     );
-    setFormData({ nazwa: "", opis: "", liczbaUczestnikow: 0 });
+    setFormData({ id: 0, nazwa: "", opis: "", uczestnicy: [] });
     setShowEdit(false);
   };
 
-  
   const sortData = (column) => {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
     const sortedData = [...projects].sort((a, b) => {
@@ -82,6 +83,17 @@ const TableProjects = ({ projects, setProjects }) => {
     setSortColumn(column);
     setSortOrder(newSortOrder);
   };
+
+  const participants = projects.reduce((acc, project) => {
+    let count = 0;
+    for (let participant in project.uczestnicy) {
+      if (project.uczestnicy[participant].zgoda === true) {
+        count++;
+      }
+    }
+    acc[project.id] = count;
+    return acc;
+  }, {});
 
   return (
     <>
@@ -110,9 +122,12 @@ const TableProjects = ({ projects, setProjects }) => {
           {displayedProjects.map((project) => (
             <tr key={project.id}>
               <td className="id">{project.id}</td>
-              <td className="name">{project.nazwa}</td>
+              <td className="name">
+                <Link to={`/projects/${project.id}`}>{project.nazwa} </Link>
+              </td>
               <td className="surname">{project.opis}</td>
-              <td className="adres">{project.liczbaUczestnikow}</td>
+              {/* <td className="adres">{project.uczestnicy.length}</td> */}
+              <td className="adres">{participants[project.id]}</td>
               <td className="buttons">
                 <button
                   className="edit-btn"
