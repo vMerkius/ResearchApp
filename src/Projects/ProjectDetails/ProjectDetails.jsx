@@ -12,6 +12,7 @@ const ProjectDetails = () => {
   const [patientsInProjectFiltered, setPatientsInProjectFiltered] = useState(
     []
   );
+  const [change, setChange] = useState(false);
 
   const [findSurname, setFindSurname] = useState("");
 
@@ -41,7 +42,7 @@ const ProjectDetails = () => {
       setPatientsInProject(patientsInProject_);
       setAgreements(allAgreements);
     }
-  }, [project, patients]);
+  }, [project, patients, change]);
   useEffect(() => {
     if (findSurname !== "") {
       const filtered = patientsInProject.filter((patient) => {
@@ -63,6 +64,8 @@ const ProjectDetails = () => {
         patients={patientsInProjectFiltered}
         setPatients={setPatientsInProject}
         agreements={agreements}
+        project={project}
+        setChange={setChange}
       ></TableProjectDetails>
     </main>
   );

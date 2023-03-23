@@ -81,15 +81,15 @@
       "uczestnicy": [
         {
           "pacjentId": 1,
-          "zgoda": true
-        },
-        {
-          "pacjentId": 2,
           "zgoda": false
         },
         {
-          "pacjentId": 3,
+          "pacjentId": 2,
           "zgoda": true
+        },
+        {
+          "pacjentId": 3,
+          "zgoda": false
         }
       ]
     },

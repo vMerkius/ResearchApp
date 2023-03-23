@@ -1,11 +1,16 @@
-import { deletePatient, updatePatient } from "../../server";
+import { deletePatient, updatePatient, updateProject } from "../../server";
 import { useState } from "react";
 import "../projects.css";
 // import EditPatients from "./EditPatients";
 
-const TableProjectDetails = ({ patients, setPatients, agreements }) => {
-  console.log(agreements);
-  console.log(patients);
+const TableProjectDetails = ({
+  patients,
+  setPatients,
+  agreements,
+  project,
+  setChange,
+  change,
+}) => {
   const [sortColumn, setSortColumn] = useState("id");
   const [sortOrder, setSortOrder] = useState("asc");
   const [showEdit, setShowEdit] = useState(false);
@@ -29,22 +34,32 @@ const TableProjectDetails = ({ patients, setPatients, agreements }) => {
   //tablica odpowiedzialna za zwrocenie jedynie pacjentow danej strony
   const displayedPatients = paginate(patients, currentPage, itemsPerPage);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  //usuwanie pacjenta z projektu
+  const handleDelete = async (id) => {
+    const participantsWithoutDeleted = project.uczestnicy.filter(
+      (patient) => patient.pacjentId !== id
+    );
+    const ids = participantsWithoutDeleted.map(
+      (participan) => participan.pacjentId
+    );
+    let projectNew = project;
+    projectNew.uczestnicy = participantsWithoutDeleted;
+    const updatedPatientData = await updateProject(projectNew);
+
+    setPatients(patients.filter((p) => ids.includes(p.id)));
   };
-  const handleDelete = (id) => {
-    deletePatient(id).then(() => {
-      setPatients(patients.filter((patient) => patient.id !== id));
+
+  const handleEdit = async (patient) => {
+    console.log(patient);
+    let projectEditAgreement = project;
+    projectEditAgreement.uczestnicy = project.uczestnicy.map((p) => {
+      const patientAgreement = p;
+      if (p.pacjentId == patient.id)
+        patientAgreement.zgoda = !patientAgreement.zgoda;
+      return patientAgreement;
     });
-  };
-  const handleEdit = (patient) => {
-    setFormData({
-      id: patient.id,
-      imie: patient.imie,
-      nazwisko: patient.nazwisko,
-      adres: patient.adres,
-    });
-    setShowEdit(!showEdit);
+    const updatedPatientData = await updateProject(projectEditAgreement);
+    setChange(!change);
   };
 
   //metoda odpowiedzialna za update pacjenta po wcisnieciu edytuj
@@ -62,8 +77,6 @@ const TableProjectDetails = ({ patients, setPatients, agreements }) => {
         p.id === updatedPatientData.id ? updatedPatientData : p
       )
     );
-    setFormData({ imie: "", nazwisko: "", adres: "" });
-    setShowEdit(false);
   };
 
   const sortData = (column) => {

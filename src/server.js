@@ -84,6 +84,17 @@ const updateProject = (project) => {
     .then((res) => res.data);
 };
 
+const deletePatientFromProject = async (id, projectId) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:8000/projekty/${projectId}/pacjenci/${id}`
+    );
+    console.log("Usunięto pacjenta z projektu:", response.data);
+    alert("Usunięto pacjenta z projektu");
+  } catch (error) {
+    console.error("Błąd podczas usuwania pacjenta:", error);
+  }
+};
 export {
   getPatients,
   getProjects,
@@ -94,4 +105,5 @@ export {
   deleteProject,
   updateProject,
   getSingleProject,
+  deletePatientFromProject,
 };
