@@ -71,7 +71,14 @@ const TableProjects = ({ projects, setProjects }) => {
   const sortData = (column) => {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
     const sortedData = [...projects].sort((a, b) => {
-      if (a[column] < b[column]) {
+      if (a[column] === "uczestnicy") {
+        console.log("tu");
+        if (a[column] - b[column] < 0) {
+          return sortOrder === "asc" ? -1 : 1;
+        } else if (a[column] - b[column] > 0) {
+          return sortOrder === "asc" ? 1 : -1;
+        } else return 0;
+      } else if (a[column] < b[column]) {
         return sortOrder === "asc" ? -1 : 1;
       }
       if (a[column] > b[column]) {
@@ -110,10 +117,9 @@ const TableProjects = ({ projects, setProjects }) => {
             <th onClick={() => sortData("opis")}>
               Opis {sortColumn === "opis" && (sortOrder === "asc" ? "▲" : "▼")}
             </th>
-            <th onClick={() => sortData("liczbaUczestnikow")}>
+            <th onClick={() => sortData("uczestnicy")}>
               Liczba uczestnikow{" "}
-              {sortColumn === "liczbaUczestnikow" &&
-                (sortOrder === "asc" ? "▲" : "▼")}
+              {sortColumn === "uczestnicy" && (sortOrder === "asc" ? "▲" : "▼")}
             </th>
             <th></th>
           </tr>

@@ -4,7 +4,7 @@ import Projects from "./Projects/Projects";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./Header/Header";
-import ProjectDetails from "./Projects/ProjectDetails";
+import ProjectDetails from "./Projects/ProjectDetails/ProjectDetails";
 
 const App = () => {
   return (

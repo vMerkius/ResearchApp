@@ -78,7 +78,6 @@
       "id": 1,
       "nazwa": "Badanie A",
       "opis": "Opis badania A",
-      "liczbaUczestnikow": 0,
       "uczestnicy": [
         {
           "pacjentId": 1,
@@ -97,7 +96,8 @@
     {
       "id": 2,
       "nazwa": "Badanie B",
-      "opis": "Opis badania HJ"
+      "opis": "Opis badania HJ",
+      "uczestnicy": []
     },
     {
       "id": 3,
