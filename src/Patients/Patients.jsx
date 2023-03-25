@@ -26,7 +26,6 @@ const Patients = () => {
     updatePatientsList();
   }, []);
 
-
   //przefiltrowanie tablicy pacjentow, z wybrana nazwa, wysylanej do komponentu TablePatients
   useEffect(() => {
     if (findSurname !== "") {
@@ -42,9 +41,17 @@ const Patients = () => {
   }, [findSurname, patients]);
   return (
     <main>
-      <FindPatient findPatient={setFindSurname}></FindPatient>
+      <div className="patient-forms">
+        <FindPatient
+          findPatient={setFindSurname}
+          className="add-patient"
+        ></FindPatient>
+        <AddPatient
+          onAddPatient={updatePatientsList}
+          className="find-patient"
+        />
+      </div>
       <TablePatients patients={filteredPatients} setPatients={setPatients} />
-      <AddPatient onAddPatient={updatePatientsList} />
     </main>
   );
 };

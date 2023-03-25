@@ -11,19 +11,21 @@ const FindPatient = ({ findPatient }) => {
     findPatient(findSurname);
   };
   return (
-    <>
+    <section className="find-patient">
       <h2>Wyszukaj po nazwisku:</h2>
-      <label htmlFor="finder">Nazwisko:</label>
-      <input
-        type="text"
-        id="finder"
-        name="finder"
-        onChange={handleChange}
-      ></input>
-      <button type="button" onClick={handleSubmit}>
-        Find
-      </button>
-    </>
+      <form>
+        <label htmlFor="finder">Nazwisko:</label>
+        <input
+          type="text"
+          id="finder"
+          name="finder"
+          onChange={handleChange}
+        ></input>
+        <button type="button" onClick={handleSubmit}>
+          Find
+        </button>
+      </form>
+    </section>
   );
 };
 

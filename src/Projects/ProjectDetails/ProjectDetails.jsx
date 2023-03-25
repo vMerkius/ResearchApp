@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import FindPatient from "../../Patients/FindPatient";
 import { getPatients, getSingleProject } from "../../server";
+import AddPatientToProject from "./AddPatientToProject";
+import ChartProject from "./ChartsProject";
 import TableProjectDetails from "./TableProjectDetails";
 
 const ProjectDetails = () => {
@@ -12,8 +14,9 @@ const ProjectDetails = () => {
   const [patientsInProjectFiltered, setPatientsInProjectFiltered] = useState(
     []
   );
+  const [patientsNotInProject, setPatientsNotInProject] = useState([]);
   const [change, setChange] = useState(false);
-
+  const [showPatients, setShowPatients] = useState(false);
   const [findSurname, setFindSurname] = useState("");
 
   const { id } = useParams();
@@ -39,8 +42,12 @@ const ProjectDetails = () => {
       const patientsInProject_ = patients.filter((patient) =>
         patientsIds.includes(patient.id)
       );
+      const patientsNotInProject_ = patients.filter(
+        (patient) => !patientsIds.includes(patient.id)
+      );
       setPatientsInProject(patientsInProject_);
       setAgreements(allAgreements);
+      setPatientsNotInProject(patientsNotInProject_);
     }
   }, [project, patients, change]);
   useEffect(() => {
@@ -59,14 +66,30 @@ const ProjectDetails = () => {
   return (
     <main>
       <h1>{project.nazwa}</h1>
+      <ChartProject agreements={agreements}></ChartProject>
+      <button
+        onClick={() => {
+          setShowPatients(!showPatients);
+        }}
+      >
+        Add Patient
+      </button>
       <FindPatient findPatient={setFindSurname}></FindPatient>
       <TableProjectDetails
         patients={patientsInProjectFiltered}
         setPatients={setPatientsInProject}
         agreements={agreements}
         project={project}
+        change={change}
         setChange={setChange}
       ></TableProjectDetails>
+      {showPatients && (
+        <AddPatientToProject
+          patients={patientsNotInProject}
+          setProject={setProject}
+          project={project}
+        ></AddPatientToProject>
+      )}
     </main>
   );
 };

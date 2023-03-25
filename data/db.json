@@ -81,7 +81,7 @@
       "uczestnicy": [
         {
           "pacjentId": 1,
-          "zgoda": false
+          "zgoda": true
         },
         {
           "pacjentId": 2,
@@ -89,6 +89,14 @@
         },
         {
           "pacjentId": 3,
+          "zgoda": false
+        },
+        {
+          "pacjentId": 14,
+          "zgoda": true
+        },
+        {
+          "pacjentId": 12,
           "zgoda": false
         }
       ]

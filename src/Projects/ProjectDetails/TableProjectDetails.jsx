@@ -121,7 +121,14 @@ const TableProjectDetails = ({
         </thead>
         <tbody>
           {displayedPatients.map((patient) => (
-            <tr key={patient.id}>
+            <tr
+              key={patient.id}
+              id={
+                agreements.find((a) => a.id === patient.id)?.zgoda
+                  ? "agreement-true"
+                  : "agreement-false"
+              }
+            >
               <td className="id">{patient.id}</td>
               <td className="name">{patient.imie}</td>
               <td className="surname">{patient.nazwisko}</td>
@@ -133,6 +140,7 @@ const TableProjectDetails = ({
                   }
                 })}
               </td>
+
               <td className="buttons">
                 <button
                   className="edit-btn"

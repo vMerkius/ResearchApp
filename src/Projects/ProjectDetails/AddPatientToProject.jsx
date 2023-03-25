@@ -1,18 +1,9 @@
-import { deletePatient, updatePatient } from "../server";
+import { updateProject } from "../../server";
 import { useState } from "react";
-import "./patients.css";
-import EditPatients from "./EditPatients";
 
-const TablePatients = ({ patients, setPatients }) => {
+const AddPatientToProject = ({ patients, setProject, project }) => {
   const [sortColumn, setSortColumn] = useState("id");
   const [sortOrder, setSortOrder] = useState("asc");
-  const [showEdit, setShowEdit] = useState(false);
-  const [formData, setFormData] = useState({
-    id: 0,
-    imie: "",
-    nazwisko: "",
-    adres: "",
-  });
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
@@ -27,41 +18,13 @@ const TablePatients = ({ patients, setPatients }) => {
   //tablica odpowiedzialna za zwrocenie jedynie pacjentow danej strony
   const displayedPatients = paginate(patients, currentPage, itemsPerPage);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  const handleDelete = (id) => {
-    deletePatient(id).then(() => {
-      setPatients(patients.filter((patient) => patient.id !== id));
-    });
-  };
-  const handleEdit = (patient) => {
-    setFormData({
-      id: patient.id,
-      imie: patient.imie,
-      nazwisko: patient.nazwisko,
-      adres: patient.adres,
-    });
-    setShowEdit(!showEdit);
-  };
-
-  //metoda odpowiedzialna za update pacjenta po wcisnieciu edytuj
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const updatedPatient = {
-      id: formData.id,
-      imie: formData.imie,
-      nazwisko: formData.nazwisko,
-      adres: formData.adres,
-    };
-    const updatedPatientData = await updatePatient(updatedPatient);
-    setPatients(
-      patients.map((p) =>
-        p.id === updatedPatientData.id ? updatedPatientData : p
-      )
-    );
-    setFormData({ imie: "", nazwisko: "", adres: "" });
-    setShowEdit(false);
+  const handleAdd = (patient) => {
+    let projectWithNewPatient = project;
+    const newData = { pacjentId: patient.id, zgoda: true };
+    projectWithNewPatient.uczestnicy.push(newData);
+    const updatedProject = updateProject(projectWithNewPatient);
+    setProject(updatedProject);
+    window.location.reload();
   };
 
   const sortData = (column) => {
@@ -76,21 +39,13 @@ const TablePatients = ({ patients, setPatients }) => {
       return 0;
     });
 
-    setPatients(sortedData);
+    //setPatients(sortedData);
     setSortColumn(column);
     setSortOrder(newSortOrder);
   };
 
   return (
     <>
-      {showEdit && (
-        <EditPatients
-          formData={formData}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          setShowEdit={setShowEdit}
-        />
-      )}
       <table>
         <thead>
           <tr>
@@ -119,17 +74,8 @@ const TablePatients = ({ patients, setPatients }) => {
               <td className="surname">{patient.nazwisko}</td>
               <td className="adres">{patient.adres}</td>
               <td className="buttons">
-                <button
-                  className="edit-btn"
-                  onClick={() => handleEdit(patient)}
-                >
-                  Edytuj
-                </button>
-                <button
-                  className="remove-btn"
-                  onClick={() => handleDelete(patient.id)}
-                >
-                  Usuń
+                <button className="edit-btn" onClick={() => handleAdd(patient)}>
+                  Dodaj
                 </button>
               </td>
             </tr>
@@ -163,4 +109,4 @@ const TablePatients = ({ patients, setPatients }) => {
   );
 };
 
-export default TablePatients;
+export default AddPatientToProject;

@@ -4,17 +4,20 @@ import "./header.css";
 const Header = () => {
   return (
     <header>
-      <ul>
-        <li>
-          <Link to="/">Podsumowanie</Link>
-        </li>
-        <li>
-          <Link to="/patients">Pacjenci</Link>
-        </li>
-        <li>
-          <Link to="/projects">Projects</Link>
-        </li>
-      </ul>
+      <nav>
+        <Link to="/" className="link link-main">
+          Podsumowanie
+        </Link>
+        <div className="sites">
+          <Link to="/patients" className="link">
+            Pacjenci
+          </Link>
+
+          <Link to="/projects" className="link">
+            Projekty
+          </Link>
+        </div>
+      </nav>
     </header>
   );
 };
