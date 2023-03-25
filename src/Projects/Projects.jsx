@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { getProjects, getPeopleInProject } from "../server";
 import TableProjects from "./TableProjects";
 
-import "./projects.css";
 import AddProject from "./AddProject";
 import FindProject from "./FindProject";
 
 const Projects = () => {
+  const [showFind, setshowFind] = useState(false);
+  const [showAdd, setshowAdd] = useState(false);
+
   const [projects, setProjects] = useState([]);
   const [filteredProjects, setFilteredProjects] = useState([]);
   const [connections, setConnections] = useState([]);
@@ -40,12 +42,32 @@ const Projects = () => {
 
   return (
     <main>
-      <FindProject findProject={setFindProject}></FindProject>
+      <div className="buttons">
+        <button
+          className="button-find"
+          onClick={() => {
+            setshowFind(!showFind);
+          }}
+        >
+          Znajdź projekt
+        </button>
+        <button
+          className="button-add"
+          onClick={() => {
+            setshowAdd(!showAdd);
+          }}
+        >
+          Dodaj projekt
+        </button>
+      </div>
+      <div className="project-forms">
+        {showFind && <FindProject findProject={setFindProject}></FindProject>}
+        {showAdd && <AddProject onAddPatient={updateProjectsList} />}
+      </div>
       <TableProjects
         projects={filteredProjects}
         setProjects={setProjects}
       ></TableProjects>
-      <AddProject onAddPatient={updateProjectsList} />
     </main>
   );
 };

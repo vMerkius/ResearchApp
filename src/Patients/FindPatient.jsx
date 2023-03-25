@@ -22,7 +22,7 @@ const FindPatient = ({ findPatient }) => {
           onChange={handleChange}
         ></input>
         <button type="button" onClick={handleSubmit}>
-          Find
+          Szukaj
         </button>
       </form>
     </section>

@@ -1,7 +1,5 @@
 import { deletePatient, updatePatient, updateProject } from "../../server";
 import { useState } from "react";
-import "../projects.css";
-// import EditPatients from "./EditPatients";
 
 const TableProjectDetails = ({
   patients,

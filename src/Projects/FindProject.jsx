@@ -12,17 +12,21 @@ const FindProject = ({ findProject }) => {
   };
   return (
     <>
-      <h2>Wyszukaj po nazwie projektu:</h2>
-      <label htmlFor="finder">Nazwa:</label>
-      <input
-        type="text"
-        id="finder"
-        name="finder"
-        onChange={handleChange}
-      ></input>
-      <button type="button" onClick={handleSubmit}>
-        Find
-      </button>
+      <section className="find-patient">
+        <h2>Wyszukaj po nazwie projektu:</h2>
+        <form>
+          <label htmlFor="finder">Nazwa:</label>
+          <input
+            type="text"
+            id="finder"
+            name="finder"
+            onChange={handleChange}
+          ></input>
+          <button type="button" onClick={handleSubmit}>
+            Szukaj
+          </button>
+        </form>
+      </section>
     </>
   );
 };

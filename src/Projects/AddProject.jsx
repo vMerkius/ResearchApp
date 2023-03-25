@@ -23,27 +23,30 @@ const AddProject = ({ onAddPatient }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="nazwa">Nazwa:</label>
-      <input
-        type="text"
-        id="nazwa"
-        name="nazwa"
-        value={formData.nazwa}
-        onChange={handleChange}
-        required
-      />
-      <label htmlFor="opis">Opis:</label>
-      <input
-        type="text"
-        id="opis"
-        name="opis"
-        value={formData.opis}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit">Dodaj Projekt</button>
-    </form>
+    <section className="add-patient">
+      <h2>Dodaj projekt:</h2>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="nazwa">Nazwa:</label>
+        <input
+          type="text"
+          id="nazwa"
+          name="nazwa"
+          value={formData.nazwa}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="opis">Opis:</label>
+        <input
+          type="text"
+          id="opis"
+          name="opis"
+          value={formData.opis}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Dodaj</button>
+      </form>
+    </section>
   );
 };
 

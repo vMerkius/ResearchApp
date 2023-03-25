@@ -1,6 +1,5 @@
 import { deletePatient, updatePatient } from "../server";
 import { useState } from "react";
-import "./patients.css";
 import EditPatients from "./EditPatients";
 
 const TablePatients = ({ patients, setPatients }) => {
@@ -118,7 +117,7 @@ const TablePatients = ({ patients, setPatients }) => {
               <td className="name">{patient.imie}</td>
               <td className="surname">{patient.nazwisko}</td>
               <td className="adres">{patient.adres}</td>
-              <td className="buttons">
+              <td className="buttons-table">
                 <button
                   className="edit-btn"
                   onClick={() => handleEdit(patient)}

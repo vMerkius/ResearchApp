@@ -1,6 +1,5 @@
 import { deletePatient } from "../server";
 import { useState } from "react";
-import "./projects.css";
 import EditProject from "./EditProject";
 import { updateProject } from "../server";
 import { Link } from "react-router-dom";
@@ -134,7 +133,7 @@ const TableProjects = ({ projects, setProjects }) => {
               <td className="surname">{project.opis}</td>
               {/* <td className="adres">{project.uczestnicy.length}</td> */}
               <td className="adres">{participants[project.id]}</td>
-              <td className="buttons">
+              <td className="buttons-table">
                 <button
                   className="edit-btn"
                   onClick={() => handleEdit(project)}

@@ -1,0 +1,212 @@
+main {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+table {
+  width: 60%;
+  border-collapse: collapse;
+}
+
+table th {
+  background-color: #f2f2f2;
+  text-align: left;
+  padding: 8px;
+  cursor: pointer;
+}
+
+table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+.table td.adres {
+  width: 50%;
+}
+.buttons-table {
+  display: flex;
+  justify-content: space-between;
+}
+.remove-btn {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 16px;
+  margin: 4px 2px;
+}
+.remove-btn :hover {
+  background-color: #ee382c;
+}
+.edit-btn {
+  background-color: #0073c0;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 16px;
+  margin: 4px 2px;
+}
+.edit-btn:hover {
+  background-color: #005b96;
+}
+
+.surname {
+  width: 20%;
+}
+.name {
+  width: 20%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.pagination button {
+  margin: 0 1rem;
+  background-color: #005b96;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border: none;
+  color: #fff;
+}
+.pagination button:hover {
+  cursor: pointer;
+}
+.patient-forms,
+.project-forms {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.buttons {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
+}
+.button-add,
+.button-find {
+  background-color: #999;
+  color: #fff;
+  padding: 20px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-add:hover,
+.button-find:hover {
+  background-color: #555;
+}
+.add-patient,
+.find-patient {
+  margin: auto;
+}
+
+/* Styl komponentu FindPatient */
+.find-patient form,
+.edit-patient form,
+.add-patient form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.find-patient label,
+.edit-patient label,
+.add-patient label {
+  margin-bottom: 8px;
+}
+
+.find-patient input,
+.edit-patient input,
+.add-patient input {
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+.find-patient button {
+  width: 100px;
+  height: 40px;
+  background-color: #005b96;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.find-patient button:hover {
+  background-color: #0073c0;
+}
+
+.add-patient button {
+  width: 80px;
+  height: 40px;
+  background-color: #4caf50;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-patient button:hover {
+  background-color: #388e3c;
+}
+
+.edit-patient button {
+  margin-top: 10px;
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-patient button:hover {
+  background-color: #388e3c;
+}
+
+.edit-patient button[type="button"] {
+  background-color: #f44336;
+}
+
+#agreement-true {
+  background-color: lightgreen;
+}
+
+#agreement-false {
+  background-color: orangered;
+}
