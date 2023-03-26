@@ -7,7 +7,7 @@ main {
   justify-content: center;
 }
 table {
-  width: 70%;
+  width: 60%;
   border-collapse: collapse;
 }
 
@@ -244,4 +244,9 @@ td.buttons-table {
 }
 .no-agreement:hover {
   background-color: #ee382c;
+}
+
+.diagram-container {
+  width: 500px;
+  height: 500px;
 }

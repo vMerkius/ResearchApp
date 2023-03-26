@@ -103,6 +103,14 @@ const TableProjects = ({ projects, setProjects }) => {
 
   return (
     <>
+      {showEdit && (
+        <EditProject
+          formData={formData}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          setShowEdit={setShowEdit}
+        />
+      )}
       <table>
         <thead>
           <tr>
@@ -174,14 +182,6 @@ const TableProjects = ({ projects, setProjects }) => {
           &gt;
         </button>
       </div>
-      {showEdit && (
-        <EditProject
-          formData={formData}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          setShowEdit={setShowEdit}
-        />
-      )}
     </>
   );
 };

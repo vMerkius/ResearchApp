@@ -97,7 +97,7 @@
         },
         {
           "pacjentId": 12,
-          "zgoda": false
+          "zgoda": true
         }
       ]
     },
@@ -119,6 +119,10 @@
         {
           "pacjentId": 1,
           "zgoda": false
+        },
+        {
+          "pacjentId": 10,
+          "zgoda": true
         }
       ]
     },
@@ -144,7 +148,7 @@
       "pacjentId": 1,
       "projektId": 1,
       "dataZlecenia": "2023-03-22",
-      "status": "oczekujące",
+      "status": "oczekujące2",
       "badania": [
         {
           "nazwa": "Badanie krwi",
@@ -176,7 +180,7 @@
     {
       "id": 3,
       "pacjentId": 2,
-      "projektId": 2,
+      "projektId": 1,
       "dataZlecenia": "2023-03-21",
       "status": "zakończone",
       "badania": [

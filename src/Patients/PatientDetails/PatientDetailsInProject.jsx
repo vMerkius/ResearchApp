@@ -1,12 +1,24 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { deleteOrder, getOrders } from "../../server";
+import { deleteOrder, getOrders, updateOrder } from "../../server";
+import AddOrder from "./AddOrder";
+import EditOrder from "./EditOrder";
 
 const PatientDetailsInProject = () => {
   const [patientOrders, setPatientOrders] = useState([]);
+  const [showAdd, setShowAdd] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [formData, setFormData] = useState({
+    id: 0,
+    pacjentId: 0,
+    projektId: 0,
+    dataZlecenia: "",
+    status: "",
+    badania: [],
+  });
 
   const { idPatient, idProject } = useParams();
-  useEffect(() => {
+  const updateOrdersList = () => {
     getOrders().then((data) => {
       const allPatientOrders = data.filter(
         (order) =>
@@ -15,8 +27,52 @@ const PatientDetailsInProject = () => {
       );
       setPatientOrders(allPatientOrders);
     });
+  };
+  useEffect(() => {
+    updateOrdersList();
   }, [idPatient, idProject]);
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleEdit = (order) => {
+    setFormData({
+      id: order.id,
+      pacjentId: order.pacjentId,
+      projektId: order.projektId,
+      dataZlecenia: order.dataZlecenia,
+      status: order.status,
+      badania: order.badania,
+    });
+    setShowEdit(!showEdit);
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const updatedOrder = {
+      id: formData.id,
+      pacjentId: formData.pacjentId,
+      projektId: formData.projektId,
+      dataZlecenia: formData.dataZlecenia,
+      status: formData.status,
+      badania: formData.badania,
+    };
+    console.log(updatedOrder.id);
+    const updatedOrdertData = await updateOrder(updatedOrder);
+    setPatientOrders(
+      patientOrders.map((p) =>
+        p.id === updatedOrdertData.id ? updatedOrdertData : p
+      )
+    );
+    setFormData({
+      id: 0,
+      pacjentId: 0,
+      projektId: 0,
+      dataZlecenia: "",
+      status: "",
+      badania: [],
+    });
+    setShowEdit(false);
+  };
   const handleDelete = (order) => {
     if (order.status !== "zakończone") {
       deleteOrder(order.id).then(() => {
@@ -24,11 +80,37 @@ const PatientDetailsInProject = () => {
       });
     }
   };
-  console.log(patientOrders);
 
   return (
     <main>
       <h1>Lista zleceń</h1>
+      <button
+        className="button-add"
+        onClick={() => {
+          setShowAdd(!showAdd);
+        }}
+      >
+        Dodaj zlecenie
+      </button>
+      {showEdit && (
+        <EditOrder
+          formData={formData}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          setShowEdit={setShowEdit}
+        />
+      )}
+      <div className="patient-forms">
+        {showAdd && (
+          <AddOrder
+            onAddOrder={updateOrdersList}
+            projectId={idProject}
+            patientId={idPatient}
+            setShowAdd={setShowAdd}
+            className="find-patient"
+          />
+        )}
+      </div>
       <table>
         <thead>
           <tr>
@@ -48,22 +130,28 @@ const PatientDetailsInProject = () => {
               <td>{order.status}</td>
               <td>
                 <ul>
-                  {order.badania.map((badanie) => (
-                    <li key={badanie.nazwa}>{badanie.nazwa}</li>
-                  ))}
+                  {order.badania[0]
+                    ? order.badania.map((badanie) => (
+                        <li key={badanie.nazwa}>{badanie.nazwa}</li>
+                      ))
+                    : ""}
                 </ul>
               </td>
               <td>
                 <ul>
-                  {order.badania.map((badanie) => (
-                    <li key={badanie.nazwa}>
-                      {badanie.wynik ? badanie.wynik : "-"}
-                    </li>
-                  ))}
+                  {order.badania[0]
+                    ? order.badania.map((badanie) => (
+                        <li key={badanie.nazwa}>
+                          {badanie.wynik ? badanie.wynik : "-"}
+                        </li>
+                      ))
+                    : ""}
                 </ul>
               </td>
               <td className="buttons-table">
-                <button className="edit-btn">Edytuj</button>
+                <button className="edit-btn" onClick={() => handleEdit(order)}>
+                  Edytuj
+                </button>
                 <button
                   className="remove-btn"
                   onClick={() => handleDelete(order)}

@@ -122,6 +122,24 @@ const deleteOrder = (id) => {
     .delete(`http://localhost:8000/zlecenia/${id}`)
     .then((res) => res.data);
 };
+const addOrder = async (formData) => {
+  try {
+    const response = await axios.post(
+      "http://localhost:8000/zlecenia",
+      formData
+    );
+    console.log("Dodano zlecenie:", response.data);
+    alert("Dodano zlecenie");
+    return formData;
+  } catch (error) {
+    console.error("Błąd podczas dodawania zlecenie:", error);
+  }
+};
+const updateOrder = (order) => {
+  return axios
+    .put(`http://localhost:8000/zlecenia/${order.id}`, order)
+    .then((res) => res.data);
+};
 
 export {
   getPatients,
@@ -137,4 +155,6 @@ export {
   getSinglePatient,
   getOrders,
   deleteOrder,
+  addOrder,
+  updateOrder,
 };

@@ -25,8 +25,8 @@ const ChartsSummary = ({ projects }) => {
     ],
   };
   return (
-    <div>
-      <Pie key="chart-project" data={data} />
+    <div className="diagram-container">
+      <Pie key="chart-project" data={data} className="diagram" />
     </div>
   );
 };
