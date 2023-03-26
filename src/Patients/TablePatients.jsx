@@ -12,6 +12,8 @@ const TablePatients = ({ patients, setPatients }) => {
     imie: "",
     nazwisko: "",
     adres: "",
+    plec: "",
+    dataUrodzenia: "",
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -41,6 +43,8 @@ const TablePatients = ({ patients, setPatients }) => {
       imie: patient.imie,
       nazwisko: patient.nazwisko,
       adres: patient.adres,
+      plec: patient.plec,
+      dataUrodzenia: patient.dataUrodzenia,
     });
     setShowEdit(!showEdit);
   };
@@ -53,6 +57,8 @@ const TablePatients = ({ patients, setPatients }) => {
       imie: formData.imie,
       nazwisko: formData.nazwisko,
       adres: formData.adres,
+      plec: formData.plec,
+      dataUrodzenia: formData.dataUrodzenia,
     };
     const updatedPatientData = await updatePatient(updatedPatient);
     setPatients(
@@ -60,7 +66,13 @@ const TablePatients = ({ patients, setPatients }) => {
         p.id === updatedPatientData.id ? updatedPatientData : p
       )
     );
-    setFormData({ imie: "", nazwisko: "", adres: "" });
+    setFormData({
+      imie: "",
+      nazwisko: "",
+      adres: "",
+      plec: "",
+      dataUrodzenia: "",
+    });
     setShowEdit(false);
   };
 
@@ -104,6 +116,8 @@ const TablePatients = ({ patients, setPatients }) => {
               Nazwisko{" "}
               {sortColumn === "nazwisko" && (sortOrder === "asc" ? "▲" : "▼")}
             </th>
+            <th>Płeć</th>
+            <th>Data urodzenia</th>
             <th onClick={() => sortData("adres")}>
               Adres{" "}
               {sortColumn === "adres" && (sortOrder === "asc" ? "▲" : "▼")}
@@ -121,6 +135,8 @@ const TablePatients = ({ patients, setPatients }) => {
                 {" "}
                 <Link to={`/patients/${patient.id}`}>{patient.nazwisko} </Link>
               </td>
+              <td>{patient.plec}</td>
+              <td>{patient.dataUrodzenia}</td>
               <td className="adres">{patient.adres}</td>
               <td className="buttons-table">
                 <button

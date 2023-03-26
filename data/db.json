@@ -4,73 +4,105 @@
       "id": 1,
       "imie": "Jan",
       "nazwisko": "Kowalski",
-      "adres": "ul. Kwiatowa 12, 00-111 Warszawa"
+      "adres": "ul. Kwiatowa 12, 00-111 Warszawa",
+      "plec": "M",
+      "dataUrodzenia": "1990-01-01"
     },
     {
       "id": 2,
       "imie": "Anna",
       "nazwisko": "Nowak",
-      "adres": "ul. Słoneczna 25, 00-222 Warszawa"
+      "adres": "ul. Słoneczna 25, 00-222 Warszawa",
+      "plec": "K",
+      "dataUrodzenia": "1990-01-01"
     },
     {
       "id": 3,
       "imie": "Marek",
       "nazwisko": "Dobrodziejski6",
-      "adres": "ul. Księżycowa 15, 16-400 Suwałki"
+      "adres": "ul. Księżycowa 15, 16-400 Suwałki",
+      "plec": "M",
+      "dataUrodzenia": "1990-01-01"
     },
     {
+      "id": 6,
       "imie": "dd",
-      "nazwisko": "dd",
+      "nazwisko": "dd2",
       "adres": "dd",
-      "id": 6
+      "plec": "M",
+      "dataUrodzenia": "1990-01-01"
     },
     {
       "imie": "ff",
       "nazwisko": "ff",
       "adres": "ff",
-      "id": 7
+      "id": 7,
+      "plec": "M",
+      "dataUrodzenia": "1990-01-01"
     },
     {
       "imie": "gg",
       "nazwisko": "gg",
       "adres": "gg",
-      "id": 8
+      "id": 8,
+      "plec": "M",
+      "dataUrodzenia": "1990-01-01"
     },
     {
       "imie": "hh",
       "nazwisko": "hh",
       "adres": "hh",
-      "id": 9
+      "id": 9,
+      "plec": "M",
+      "dataUrodzenia": "1990-01-01"
     },
     {
       "imie": "gg",
       "nazwisko": "gg",
       "adres": "gg",
-      "id": 10
+      "id": 10,
+      "plec": "M",
+      "dataUrodzenia": "1990-01-01"
     },
     {
       "id": 11,
       "imie": "ttttttt",
       "nazwisko": "ttt",
-      "adres": "tt"
+      "adres": "tt",
+      "plec": "M",
+      "dataUrodzenia": "1990-01-01"
     },
     {
       "imie": "gg",
       "nazwisko": "gg",
       "adres": "gg",
-      "id": 12
+      "id": 12,
+      "plec": "M",
+      "dataUrodzenia": "1990-01-01"
     },
     {
       "imie": "jmjj",
       "nazwisko": "kk",
       "adres": "kk",
-      "id": 13
+      "id": 13,
+      "plec": "M",
+      "dataUrodzenia": "1990-01-01"
     },
     {
       "imie": "Marek",
       "nazwisko": "Dobr2",
       "adres": "gdzies",
-      "id": 14
+      "id": 14,
+      "plec": "M",
+      "dataUrodzenia": "1990-01-01"
+    },
+    {
+      "imie": "Mateusz",
+      "nazwisko": "R",
+      "adres": "gdzies",
+      "plec": "M",
+      "dataUrodzenia": "2001-01-01",
+      "id": 15
     }
   ],
   "projekty": [

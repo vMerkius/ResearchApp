@@ -32,6 +32,24 @@ const EditPatient = ({ formData, handleChange, handleSubmit, setShowEdit }) => {
           onChange={handleChange}
           required
         />
+        <label htmlFor="plec">Plec:</label>
+        <input
+          type="text"
+          id="plec"
+          name="plec"
+          value={formData.plec}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="dataUrodzenia">Data urodzenia:</label>
+        <input
+          type="text"
+          id="dataUrodzenia"
+          name="dataUrodzenia"
+          value={formData.dataUrodzenia}
+          onChange={handleChange}
+          required
+        />
         <button type="submit">Edytuj pacjenta</button>
         <button type="button" onClick={() => setShowEdit(false)}>
           Anuluj

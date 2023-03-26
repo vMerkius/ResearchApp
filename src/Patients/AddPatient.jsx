@@ -16,7 +16,13 @@ const AddPatient = ({ onAddPatient }) => {
     e.preventDefault();
     const patient = addPatient(formData).then(() => {
       if (patient) {
-        setFormData({ imie: "", nazwisko: "", adres: "" });
+        setFormData({
+          imie: "",
+          nazwisko: "",
+          adres: "",
+          plec: "",
+          dataUrodzenia: "",
+        });
         onAddPatient(formData);
       }
     });
@@ -50,6 +56,24 @@ const AddPatient = ({ onAddPatient }) => {
           id="adres"
           name="adres"
           value={formData.adres}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="plec">Plec:</label>
+        <input
+          type="text"
+          id="plec"
+          name="plec"
+          value={formData.plec}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="dataUrodzenia">Data urodzenia:</label>
+        <input
+          type="text"
+          id="dataUrodzenia"
+          name="dataUrodzenia"
+          value={formData.dataUrodzenia}
           onChange={handleChange}
           required
         />
