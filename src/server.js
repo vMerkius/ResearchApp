@@ -58,6 +58,16 @@ const getSingleProject = async (id) => {
     return [];
   }
 };
+const getSinglePatient = async (id) => {
+  try {
+    const res = await axios.get(`http://localhost:8000/pacjenci/${id}`);
+    const patient = res.data;
+    return patient;
+  } catch (error) {
+    console.error("Błąd podczas pobierania pacjenta:", error);
+    return [];
+  }
+};
 
 const addProject = async (formData) => {
   try {
@@ -106,4 +116,5 @@ export {
   updateProject,
   getSingleProject,
   deletePatientFromProject,
+  getSinglePatient,
 };

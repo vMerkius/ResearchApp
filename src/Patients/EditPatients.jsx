@@ -3,6 +3,7 @@ import React from "react";
 const EditPatient = ({ formData, handleChange, handleSubmit, setShowEdit }) => {
   return (
     <section className="edit-patient">
+      <h2>Edytuj pacjenta</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="imie">Imię:</label>
         <input

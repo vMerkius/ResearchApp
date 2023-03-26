@@ -113,10 +113,29 @@
       "opis": "Opis badania L",
       "uczestnicy": [
         {
+          "pacjentId": 1,
+          "zgoda": true
+        },
+        {
           "pacjentId": 2,
           "zgoda": true
         }
       ]
+    },
+    {
+      "nazwa": "Nowy Projekt",
+      "opis": "Opis",
+      "uczestnicy": [
+        {
+          "pacjentId": 6,
+          "zgoda": true
+        },
+        {
+          "pacjentId": 2,
+          "zgoda": false
+        }
+      ],
+      "id": 4
     }
   ],
   "zlecenia": [

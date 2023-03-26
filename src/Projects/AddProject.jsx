@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { addProject } from "../server";
 
-const AddProject = ({ onAddPatient }) => {
+const AddProject = ({ onAddProject }) => {
   const [formData, setFormData] = useState({
     nazwa: "",
     opis: "",
@@ -17,7 +17,8 @@ const AddProject = ({ onAddPatient }) => {
     const project = addProject(formData).then(() => {
       if (project) {
         setFormData({ nazwa: "", opis: "" });
-        onAddPatient(formData);
+        onAddProject(formData);
+        window.location.reload();
       }
     });
   };

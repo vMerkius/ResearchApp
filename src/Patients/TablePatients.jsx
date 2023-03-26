@@ -1,6 +1,7 @@
 import { deletePatient, updatePatient } from "../server";
 import { useState } from "react";
 import EditPatients from "./EditPatients";
+import { Link } from "react-router-dom";
 
 const TablePatients = ({ patients, setPatients }) => {
   const [sortColumn, setSortColumn] = useState("id");
@@ -115,7 +116,11 @@ const TablePatients = ({ patients, setPatients }) => {
             <tr key={patient.id}>
               <td className="id">{patient.id}</td>
               <td className="name">{patient.imie}</td>
-              <td className="surname">{patient.nazwisko}</td>
+
+              <td className="surname">
+                {" "}
+                <Link to={`/patients/${patient.id}`}>{patient.nazwisko} </Link>
+              </td>
               <td className="adres">{patient.adres}</td>
               <td className="buttons-table">
                 <button

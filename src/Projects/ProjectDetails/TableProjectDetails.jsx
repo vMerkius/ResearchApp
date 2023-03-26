@@ -1,5 +1,6 @@
 import { deletePatient, updatePatient, updateProject } from "../../server";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const TableProjectDetails = ({
   patients,
@@ -129,7 +130,15 @@ const TableProjectDetails = ({
             >
               <td className="id">{patient.id}</td>
               <td className="name">{patient.imie}</td>
-              <td className="surname">{patient.nazwisko}</td>
+              <td className="surname">
+                {" "}
+                <Link
+                  to={`/patients/${patient.id}/${project.id}`}
+                  key={project.id}
+                >
+                  {patient.nazwisko}
+                </Link>
+              </td>
               <td className="adres">{patient.adres}</td>
               <td className="aggreement">
                 {agreements.map((agreement) => {

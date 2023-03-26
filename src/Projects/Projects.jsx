@@ -62,7 +62,7 @@ const Projects = () => {
       </div>
       <div className="project-forms">
         {showFind && <FindProject findProject={setFindProject}></FindProject>}
-        {showAdd && <AddProject onAddPatient={updateProjectsList} />}
+        {showAdd && <AddProject onAddProject={updateProjectsList} />}
       </div>
       <TableProjects
         projects={filteredProjects}
