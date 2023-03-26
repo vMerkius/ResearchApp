@@ -7,6 +7,8 @@ const PatientDetails = () => {
   const [projects, setProjects] = useState([]);
   const [patient, setPatient] = useState([]);
   const [patientsProjects, setPatientsProjects] = useState([]);
+  const [patientsProjectsWihoutAgreement, setPatientsProjectsWithoutAgreement] =
+    useState([]);
 
   const { id } = useParams();
 
@@ -19,13 +21,22 @@ const PatientDetails = () => {
     });
   }, []);
   useEffect(() => {
+    // zwracanie projektow w ktorych pacjent bierze udzial
     if (projects && patient) {
       const projectsWithPatient = projects.filter((project) =>
         project.uczestnicy.some(
-          (participant) => participant.pacjentId === patient.id
+          (participant) =>
+            participant.pacjentId === patient.id && participant.zgoda === true
+        )
+      );
+      const projectsWithPatientWithoutAgreement = projects.filter((project) =>
+        project.uczestnicy.some(
+          (participant) =>
+            participant.pacjentId === patient.id && participant.zgoda === false
         )
       );
       setPatientsProjects(projectsWithPatient);
+      setPatientsProjectsWithoutAgreement(projectsWithPatientWithoutAgreement);
     }
     console.log(patientsProjects);
     console.log(patient);
@@ -40,6 +51,13 @@ const PatientDetails = () => {
         {patientsProjects.map((project) => (
           <Link to={`/patients/${id}/${project.id}`} key={project.id}>
             <div className="project-tile">
+              <h3>{project.nazwa}</h3>
+            </div>
+          </Link>
+        ))}
+        {patientsProjectsWihoutAgreement.map((project) => (
+          <Link to={`/projects/${project.id}`} key={project.id}>
+            <div className="project-tile no-agreement">
               <h3>{project.nazwa}</h3>
             </div>
           </Link>

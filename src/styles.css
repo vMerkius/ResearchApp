@@ -7,7 +7,7 @@ main {
   justify-content: center;
 }
 table {
-  width: 60%;
+  width: 70%;
   border-collapse: collapse;
 }
 
@@ -27,16 +27,24 @@ table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
+table td:first-child {
+  width: 30px;
+}
+
 table tr:hover {
   background-color: #ddd;
 }
 .table td.adres {
   width: 50%;
 }
-.buttons-table {
-  display: flex;
-  justify-content: space-between;
+td.buttons-table {
+  width: 150px;
 }
+.buttons-table {
+  justify-content: space-between;
+  align-items: center;
+}
+
 .remove-btn {
   background-color: #f44336;
   border: none;
@@ -208,7 +216,7 @@ table tr:hover {
 }
 
 #agreement-false {
-  background-color: orangered;
+  background-color: #ee382c;
 }
 
 .project-tile {
@@ -229,4 +237,11 @@ table tr:hover {
 
 .project-tile:hover {
   background-color: #f0f0f0;
+}
+
+.no-agreement {
+  background-color: #f44336;
+}
+.no-agreement:hover {
+  background-color: #ee382c;
 }

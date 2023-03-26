@@ -131,13 +131,16 @@ const TableProjectDetails = ({
               <td className="id">{patient.id}</td>
               <td className="name">{patient.imie}</td>
               <td className="surname">
-                {" "}
-                <Link
-                  to={`/patients/${patient.id}/${project.id}`}
-                  key={project.id}
-                >
-                  {patient.nazwisko}
-                </Link>
+                {agreements.find((a) => a.id === patient.id)?.zgoda ? (
+                  <Link
+                    to={`/patients/${patient.id}/${project.id}`}
+                    key={project.id}
+                  >
+                    {patient.nazwisko}
+                  </Link>
+                ) : (
+                  <span>{patient.nazwisko}</span>
+                )}
               </td>
               <td className="adres">{patient.adres}</td>
               <td className="aggreement">

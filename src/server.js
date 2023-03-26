@@ -105,6 +105,24 @@ const deletePatientFromProject = async (id, projectId) => {
     console.error("Błąd podczas usuwania pacjenta:", error);
   }
 };
+
+const getOrders = async () => {
+  try {
+    const res = await axios.get("http://localhost:8000/zlecenia");
+    const orders = res.data;
+    return orders;
+  } catch (error) {
+    console.error("Błąd podczas pobierania zleceń:", error);
+    return [];
+  }
+};
+
+const deleteOrder = (id) => {
+  return axios
+    .delete(`http://localhost:8000/zlecenia/${id}`)
+    .then((res) => res.data);
+};
+
 export {
   getPatients,
   getProjects,
@@ -117,4 +135,6 @@ export {
   getSingleProject,
   deletePatientFromProject,
   getSinglePatient,
+  getOrders,
+  deleteOrder,
 };

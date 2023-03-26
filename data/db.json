@@ -89,7 +89,7 @@
         },
         {
           "pacjentId": 3,
-          "zgoda": false
+          "zgoda": true
         },
         {
           "pacjentId": 14,
@@ -113,12 +113,12 @@
       "opis": "Opis badania L",
       "uczestnicy": [
         {
-          "pacjentId": 1,
+          "pacjentId": 2,
           "zgoda": true
         },
         {
-          "pacjentId": 2,
-          "zgoda": true
+          "pacjentId": 1,
+          "zgoda": false
         }
       ]
     },
@@ -143,26 +143,44 @@
       "id": 1,
       "pacjentId": 1,
       "projektId": 1,
+      "dataZlecenia": "2023-03-22",
+      "status": "oczekujące",
       "badania": [
         {
-          "id": 1,
           "nazwa": "Badanie krwi",
           "wynik": "W normie"
         },
         {
-          "id": 2,
           "nazwa": "Badanie EKG",
           "wynik": "Nieprawidłowe"
+        },
+        {
+          "nazwa": "Badanie RTG",
+          "wynik": ""
         }
       ]
     },
     {
       "id": 2,
-      "pacjentId": 2,
-      "projektId": 2,
+      "pacjentId": 1,
+      "projektId": 1,
+      "dataZlecenia": "2023-03-22",
+      "status": "zakończone",
       "badania": [
         {
-          "id": 3,
+          "nazwa": "Badania sprawnościowe",
+          "wynik": "W normie"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "pacjentId": 2,
+      "projektId": 2,
+      "dataZlecenia": "2023-03-21",
+      "status": "zakończone",
+      "badania": [
+        {
           "nazwa": "Badanie RTG",
           "wynik": "W normie"
         }
