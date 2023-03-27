@@ -73,7 +73,7 @@ const AddPatientToProject = ({ patients, setProject, project }) => {
               <td className="name">{patient.imie}</td>
               <td className="surname">{patient.nazwisko}</td>
               <td className="adres">{patient.adres}</td>
-              <td className="buttons">
+              <td className="buttons-table">
                 <button className="edit-btn" onClick={() => handleAdd(patient)}>
                   Dodaj
                 </button>

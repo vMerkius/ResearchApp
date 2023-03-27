@@ -168,7 +168,7 @@
         },
         {
           "pacjentId": 2,
-          "zgoda": false
+          "zgoda": true
         }
       ],
       "id": 4
@@ -180,11 +180,11 @@
       "pacjentId": 1,
       "projektId": 1,
       "dataZlecenia": "2023-03-22",
-      "status": "oczekujące2",
+      "status": "oczekujące3",
       "badania": [
         {
           "nazwa": "Badanie krwi",
-          "wynik": "W normie"
+          "wynik": "W normie2"
         },
         {
           "nazwa": "Badanie EKG",
@@ -192,7 +192,11 @@
         },
         {
           "nazwa": "Badanie RTG",
-          "wynik": ""
+          "wynik": "Słabe"
+        },
+        {
+          "nazwa": "sss",
+          "wynik": "sss"
         }
       ]
     },
@@ -203,6 +207,10 @@
       "dataZlecenia": "2023-03-22",
       "status": "zakończone",
       "badania": [
+        {
+          "nazwa": "Badanie EKG",
+          "wynik": ""
+        },
         {
           "nazwa": "Badania sprawnościowe",
           "wynik": "W normie"
@@ -221,6 +229,30 @@
           "wynik": "W normie"
         }
       ]
+    },
+    {
+      "pacjentId": 2,
+      "projektId": 3,
+      "dataZlecenia": "27-03-2023",
+      "status": "rozpoczęte",
+      "badania": [],
+      "id": 4
+    },
+    {
+      "pacjentId": 1,
+      "projektId": 1,
+      "dataZlecenia": "27-03-2023",
+      "status": "rozpoczęte",
+      "badania": [],
+      "id": 5
+    },
+    {
+      "pacjentId": 1,
+      "projektId": 1,
+      "dataZlecenia": "27-03-2023",
+      "status": "rozpoczęte",
+      "badania": [],
+      "id": 6
     }
   ]
 }

@@ -119,7 +119,7 @@ td.buttons-table {
 }
 .button-add,
 .button-find {
-  background-color: #999;
+  background-color: #808080;
   color: #fff;
   padding: 20px 24px;
   border: none;
@@ -249,4 +249,27 @@ td.buttons-table {
 .diagram-container {
   width: 500px;
   height: 500px;
+}
+
+.delete-button {
+  margin-left: 10px;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.add-button {
+  margin-left: 10px;
+  background-color: #19ca13;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  cursor: pointer;
 }

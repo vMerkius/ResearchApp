@@ -151,12 +151,12 @@ const TableProjectDetails = ({
                 })}
               </td>
 
-              <td className="buttons">
+              <td className="buttons-table">
                 <button
                   className="edit-btn"
                   onClick={() => handleEdit(patient)}
                 >
-                  Edytuj
+                  Zmień zgodę
                 </button>
                 <button
                   className="remove-btn"
@@ -192,14 +192,6 @@ const TableProjectDetails = ({
           &gt;
         </button>
       </div>
-      {/* {showEdit && (
-        <EditPatients
-          formData={formData}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          setShowEdit={setShowEdit}
-        />
-      )} */}
     </>
   );
 };

@@ -18,6 +18,7 @@ const ProjectDetails = () => {
   const [change, setChange] = useState(false);
   const [showPatients, setShowPatients] = useState(false);
   const [findSurname, setFindSurname] = useState("");
+  const [showFind, setshowFind] = useState(false);
 
   const { id } = useParams();
 
@@ -67,14 +68,32 @@ const ProjectDetails = () => {
     <main>
       <h1>{project.nazwa}</h1>
       <ChartProject agreements={agreements}></ChartProject>
-      <button
-        onClick={() => {
-          setShowPatients(!showPatients);
-        }}
-      >
-        Add Patient
-      </button>
-      <FindPatient findPatient={setFindSurname}></FindPatient>
+      <div className="buttons">
+        <button
+          className="button-add"
+          onClick={() => {
+            setShowPatients(!showPatients);
+          }}
+        >
+          Add Patient
+        </button>
+        <button
+          className="button-find"
+          onClick={() => {
+            setshowFind(!showFind);
+          }}
+        >
+          Znajdź projekt
+        </button>
+      </div>
+      {showPatients && (
+        <AddPatientToProject
+          patients={patientsNotInProject}
+          setProject={setProject}
+          project={project}
+        ></AddPatientToProject>
+      )}
+      {showFind && <FindPatient findPatient={setFindSurname}></FindPatient>}
       <TableProjectDetails
         patients={patientsInProjectFiltered}
         setPatients={setPatientsInProject}
@@ -83,13 +102,6 @@ const ProjectDetails = () => {
         change={change}
         setChange={setChange}
       ></TableProjectDetails>
-      {showPatients && (
-        <AddPatientToProject
-          patients={patientsNotInProject}
-          setProject={setProject}
-          project={project}
-        ></AddPatientToProject>
-      )}
     </main>
   );
 };

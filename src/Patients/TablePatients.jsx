@@ -116,7 +116,9 @@ const TablePatients = ({ patients, setPatients }) => {
               Nazwisko{" "}
               {sortColumn === "nazwisko" && (sortOrder === "asc" ? "▲" : "▼")}
             </th>
-            <th>Płeć</th>
+            <th onClick={() => sortData("plec")}>
+              Płeć {sortColumn === "plec" && (sortOrder === "asc" ? "▲" : "▼")}
+            </th>{" "}
             <th>Data urodzenia</th>
             <th onClick={() => sortData("adres")}>
               Adres{" "}
