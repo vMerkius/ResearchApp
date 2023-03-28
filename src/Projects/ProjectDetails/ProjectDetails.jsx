@@ -14,10 +14,13 @@ const ProjectDetails = () => {
   const [patientsInProjectFiltered, setPatientsInProjectFiltered] = useState(
     []
   );
+  const [patientsNotInProjectFiltered, setPatientsNotInProjectFiltered] =
+    useState([]);
   const [patientsNotInProject, setPatientsNotInProject] = useState([]);
   const [change, setChange] = useState(false);
   const [showPatients, setShowPatients] = useState(false);
   const [findSurname, setFindSurname] = useState("");
+  const [findSurnameAddPatient, setFindSurnameAddPatient] = useState("");
   const [showFind, setshowFind] = useState(false);
 
   const { id } = useParams();
@@ -37,12 +40,16 @@ const ProjectDetails = () => {
         const agreement = patient.zgoda;
         return { id: id, zgoda: agreement };
       });
+
+      // wyszukuje dane pacjentow po tym jak przeszuka uczestnikow konkretnego projektu
       const patientsIds = project.uczestnicy.map(
         (patient) => patient.pacjentId
       );
       const patientsInProject_ = patients.filter((patient) =>
         patientsIds.includes(patient.id)
       );
+
+      //zapisuje pacjentow poza projektem by wywolac tylko ich przy dodawaniu pacjentow do projektuu
       const patientsNotInProject_ = patients.filter(
         (patient) => !patientsIds.includes(patient.id)
       );
@@ -51,6 +58,7 @@ const ProjectDetails = () => {
       setPatientsNotInProject(patientsNotInProject_);
     }
   }, [project, patients, change]);
+  //szukanie w tablicy pacjentow projektu
   useEffect(() => {
     if (findSurname !== "") {
       const filtered = patientsInProject.filter((patient) => {
@@ -64,6 +72,20 @@ const ProjectDetails = () => {
     }
   }, [findSurname, patientsInProject]);
 
+  //szukanie w tablicy przy dodawaniu pacjenta do projektu
+  useEffect(() => {
+    if (findSurnameAddPatient !== "") {
+      const filtered = patientsNotInProject.filter((patient) => {
+        return patient.nazwisko
+          .toLowerCase()
+          .includes(findSurnameAddPatient.toLowerCase());
+      });
+      setPatientsNotInProjectFiltered(filtered);
+    } else {
+      setPatientsNotInProjectFiltered(patientsNotInProject);
+    }
+  }, [findSurnameAddPatient, patientsNotInProject]);
+
   return (
     <main>
       <h1>{project.nazwa}</h1>
@@ -75,7 +97,7 @@ const ProjectDetails = () => {
             setShowPatients(!showPatients);
           }}
         >
-          Add Patient
+          Dodaj pacjenta
         </button>
         <button
           className="button-find"
@@ -83,15 +105,19 @@ const ProjectDetails = () => {
             setshowFind(!showFind);
           }}
         >
-          Znajdź projekt
+          Znajdź pacjenta
         </button>
       </div>
       {showPatients && (
-        <AddPatientToProject
-          patients={patientsNotInProject}
-          setProject={setProject}
-          project={project}
-        ></AddPatientToProject>
+        <>
+          <FindPatient findPatient={setFindSurnameAddPatient}></FindPatient>
+          <AddPatientToProject
+            patients={patientsNotInProjectFiltered}
+            setProject={setProject}
+            project={project}
+            setPatients={setPatientsNotInProjectFiltered}
+          ></AddPatientToProject>
+        </>
       )}
       {showFind && <FindPatient findPatient={setFindSurname}></FindPatient>}
       <TableProjectDetails

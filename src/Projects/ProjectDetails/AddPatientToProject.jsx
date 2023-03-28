@@ -1,7 +1,7 @@
 import { updateProject } from "../../server";
 import { useState } from "react";
 
-const AddPatientToProject = ({ patients, setProject, project }) => {
+const AddPatientToProject = ({ patients, setProject, project, setPatients }) => {
   const [sortColumn, setSortColumn] = useState("id");
   const [sortOrder, setSortOrder] = useState("asc");
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,7 +39,7 @@ const AddPatientToProject = ({ patients, setProject, project }) => {
       return 0;
     });
 
-    //setPatients(sortedData);
+    setPatients(sortedData);
     setSortColumn(column);
     setSortOrder(newSortOrder);
   };

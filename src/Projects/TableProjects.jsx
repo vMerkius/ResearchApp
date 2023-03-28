@@ -71,7 +71,6 @@ const TableProjects = ({ projects, setProjects }) => {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
     const sortedData = [...projects].sort((a, b) => {
       if (a[column] === "uczestnicy") {
-        console.log("tu");
         if (a[column] - b[column] < 0) {
           return sortOrder === "asc" ? -1 : 1;
         } else if (a[column] - b[column] > 0) {
@@ -135,13 +134,14 @@ const TableProjects = ({ projects, setProjects }) => {
           {displayedProjects.map((project) => (
             <tr key={project.id}>
               <td className="id">{project.id}</td>
-              <td className="name">
-                <Link to={`/projects/${project.id}`}>{project.nazwa} </Link>
+              <td className="name-project">
+                <Link className="link-user" to={`/projects/${project.id}`}>
+                  {project.nazwa}{" "}
+                </Link>
               </td>
-              <td className="surname">{project.opis}</td>
-              {/* <td className="adres">{project.uczestnicy.length}</td> */}
-              <td className="adres">{participants[project.id]}</td>
-              <td className="buttons-table">
+              <td className="description">{project.opis}</td>
+              <td className="quantity">{participants[project.id]}</td>
+              <td className="buttons-table-project">
                 <button
                   className="edit-btn"
                   onClick={() => handleEdit(project)}

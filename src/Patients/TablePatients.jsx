@@ -37,6 +37,8 @@ const TablePatients = ({ patients, setPatients }) => {
       setPatients(patients.filter((patient) => patient.id !== id));
     });
   };
+
+  // po wcisnieciu edita zapisujemy dane danego pacjenta, by pozniej zrobic puta do serwera
   const handleEdit = (patient) => {
     setFormData({
       id: patient.id,
@@ -119,7 +121,11 @@ const TablePatients = ({ patients, setPatients }) => {
             <th onClick={() => sortData("plec")}>
               Płeć {sortColumn === "plec" && (sortOrder === "asc" ? "▲" : "▼")}
             </th>{" "}
-            <th>Data urodzenia</th>
+            <th onClick={() => sortData("dataUrodzenia")}>
+              Data urodzenia{" "}
+              {sortColumn === "dataUrodzenia" &&
+                (sortOrder === "asc" ? "▲" : "▼")}
+            </th>
             <th onClick={() => sortData("adres")}>
               Adres{" "}
               {sortColumn === "adres" && (sortOrder === "asc" ? "▲" : "▼")}
@@ -135,7 +141,9 @@ const TablePatients = ({ patients, setPatients }) => {
 
               <td className="surname">
                 {" "}
-                <Link to={`/patients/${patient.id}`}>{patient.nazwisko} </Link>
+                <Link class="link-user" to={`/patients/${patient.id}`}>
+                  {patient.nazwisko}{" "}
+                </Link>
               </td>
               <td>{patient.plec}</td>
               <td>{patient.dataUrodzenia}</td>

@@ -133,6 +133,7 @@ const TableProjectDetails = ({
               <td className="surname">
                 {agreements.find((a) => a.id === patient.id)?.zgoda ? (
                   <Link
+                    className="link-user"
                     to={`/patients/${patient.id}/${project.id}`}
                     key={project.id}
                   >
@@ -151,7 +152,7 @@ const TableProjectDetails = ({
                 })}
               </td>
 
-              <td className="buttons-table">
+              <td className="buttons-table-details">
                 <button
                   className="edit-btn"
                   onClick={() => handleEdit(patient)}

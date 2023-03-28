@@ -6,7 +6,7 @@
       "nazwisko": "Kowalski",
       "adres": "ul. Kwiatowa 12, 00-111 Warszawa",
       "plec": "M",
-      "dataUrodzenia": "1990-01-01"
+      "dataUrodzenia": "1999-01-09"
     },
     {
       "id": 2,
@@ -14,95 +14,111 @@
       "nazwisko": "Nowak",
       "adres": "ul. Słoneczna 25, 00-222 Warszawa",
       "plec": "K",
-      "dataUrodzenia": "1990-01-01"
+      "dataUrodzenia": "2001-03-07"
     },
     {
       "id": 3,
       "imie": "Marek",
-      "nazwisko": "Dobrodziejski6",
+      "nazwisko": "Dobrodziejski",
       "adres": "ul. Księżycowa 15, 16-400 Suwałki",
       "plec": "M",
-      "dataUrodzenia": "1990-01-01"
+      "dataUrodzenia": "1986-09-22"
+    },
+    {
+      "id": 4,
+      "imie": "Agnieszka",
+      "nazwisko": "Wójcik",
+      "adres": "ul. Długa 10, 50-500 Wrocław",
+      "plec": "K",
+      "dataUrodzenia": "1998-06-03"
+    },
+    {
+      "id": 5,
+      "imie": "Marcin",
+      "nazwisko": "Kaczmarek",
+      "adres": "ul. Polna 8, 30-300 Kraków",
+      "plec": "M",
+      "dataUrodzenia": "1995-02-15"
     },
     {
       "id": 6,
-      "imie": "dd",
-      "nazwisko": "dd2",
-      "adres": "dd",
-      "plec": "M",
-      "dataUrodzenia": "1990-01-01"
+      "imie": "Katarzyna",
+      "nazwisko": "Piotrowska",
+      "adres": "ul. Ogrodowa 15, 80-800 Gdańsk",
+      "plec": "K",
+      "dataUrodzenia": "1982-09-10"
     },
     {
-      "imie": "ff",
-      "nazwisko": "ff",
-      "adres": "ff",
       "id": 7,
+      "imie": "Tomasz",
+      "nazwisko": "Jaworski",
+      "adres": "ul. Słowackiego 20, 90-900 Łódź",
       "plec": "M",
-      "dataUrodzenia": "1990-01-01"
+      "dataUrodzenia": "1970-12-30"
     },
     {
-      "imie": "gg",
-      "nazwisko": "gg",
-      "adres": "gg",
       "id": 8,
-      "plec": "M",
-      "dataUrodzenia": "1990-01-01"
+      "imie": "Aleksandra",
+      "nazwisko": "Krawczyk",
+      "adres": "ul. Kwiatowa 5, 01-001 Warszawa",
+      "plec": "K",
+      "dataUrodzenia": "1992-07-20"
     },
     {
-      "imie": "hh",
-      "nazwisko": "hh",
-      "adres": "hh",
       "id": 9,
+      "imie": "Michał",
+      "nazwisko": "Kamiński",
+      "adres": "ul. Główna 10, 60-600 Poznań",
       "plec": "M",
-      "dataUrodzenia": "1990-01-01"
+      "dataUrodzenia": "1984-05-08"
     },
     {
-      "imie": "gg",
-      "nazwisko": "gg",
-      "adres": "gg",
       "id": 10,
-      "plec": "M",
-      "dataUrodzenia": "1990-01-01"
+      "imie": "Karolina",
+      "nazwisko": "Szymańska",
+      "adres": "ul. Polna 12, 40-400 Katowice",
+      "plec": "K",
+      "dataUrodzenia": "1996-11-25"
     },
     {
       "id": 11,
-      "imie": "ttttttt",
-      "nazwisko": "ttt",
-      "adres": "tt",
+      "imie": "Krzysztof",
+      "nazwisko": "Mazur",
+      "adres": "ul. Wrocławska 15, 50-500 Wrocław",
       "plec": "M",
-      "dataUrodzenia": "1990-01-01"
+      "dataUrodzenia": "1980-09-12"
     },
     {
-      "imie": "gg",
-      "nazwisko": "gg",
-      "adres": "gg",
       "id": 12,
-      "plec": "M",
-      "dataUrodzenia": "1990-01-01"
+      "imie": "Monika",
+      "nazwisko": "Adamczyk",
+      "adres": "ul. Kilińskiego 7, 30-300 Kraków",
+      "plec": "K",
+      "dataUrodzenia": "1993-04-17"
     },
     {
-      "imie": "jmjj",
-      "nazwisko": "kk",
-      "adres": "kk",
       "id": 13,
+      "imie": "Bartosz",
+      "nazwisko": "Cieślak",
+      "adres": "ul. Świerkowa 15, 16-400 Suwałki",
       "plec": "M",
-      "dataUrodzenia": "1990-01-01"
+      "dataUrodzenia": "1998-02-01"
     },
     {
-      "imie": "Marek",
-      "nazwisko": "Dobr2",
-      "adres": "gdzies",
       "id": 14,
-      "plec": "M",
-      "dataUrodzenia": "1990-01-01"
+      "imie": "Izabela",
+      "nazwisko": "Kruk",
+      "adres": "ul. Długa 5, 20-200 Lublin",
+      "plec": "K",
+      "dataUrodzenia": "1991-12-07"
     },
     {
-      "imie": "Mateusz",
-      "nazwisko": "R",
-      "adres": "gdzies",
+      "id": 15,
+      "imie": "Dominik",
+      "nazwisko": "Świątek",
+      "adres": "ul. Piłsudskiego 12, 90-900 Łódź",
       "plec": "M",
-      "dataUrodzenia": "2001-01-01",
-      "id": 15
+      "dataUrodzenia": "1987-06-25"
     }
   ],
   "projekty": [
@@ -121,14 +137,18 @@
         },
         {
           "pacjentId": 3,
+          "zgoda": false
+        },
+        {
+          "pacjentId": 4,
           "zgoda": true
         },
         {
-          "pacjentId": 14,
-          "zgoda": true
+          "pacjentId": 5,
+          "zgoda": false
         },
         {
-          "pacjentId": 12,
+          "pacjentId": 6,
           "zgoda": true
         }
       ]
@@ -136,13 +156,13 @@
     {
       "id": 2,
       "nazwa": "Badanie B",
-      "opis": "Opis badania HJ",
+      "opis": "Opis badania B",
       "uczestnicy": []
     },
     {
       "id": 3,
       "nazwa": "Badanie C",
-      "opis": "Opis badania L",
+      "opis": "Opis badania C",
       "uczestnicy": [
         {
           "pacjentId": 2,
@@ -151,27 +171,90 @@
         {
           "pacjentId": 1,
           "zgoda": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nazwa": "Badanie D",
+      "opis": "Opis badania D",
+      "uczestnicy": [
+        {
+          "pacjentId": 3,
+          "zgoda": true
         },
         {
-          "pacjentId": 10,
+          "pacjentId": 4,
+          "zgoda": false
+        },
+        {
+          "pacjentId": 5,
+          "zgoda": true
+        },
+        {
+          "pacjentId": 7,
+          "zgoda": true
+        },
+        {
+          "pacjentId": 8,
           "zgoda": true
         }
       ]
     },
     {
-      "nazwa": "Nowy Projekt",
-      "opis": "Opis",
+      "id": 5,
+      "nazwa": "Badanie E",
+      "opis": "Opis badania E",
       "uczestnicy": [
+        {
+          "pacjentId": 1,
+          "zgoda": true
+        },
         {
           "pacjentId": 6,
           "zgoda": true
         },
         {
-          "pacjentId": 2,
-          "zgoda": true
+          "pacjentId": 8,
+          "zgoda": false
         }
-      ],
-      "id": 4
+      ]
+    },
+    {
+      "id": 6,
+      "nazwa": "Badanie 6",
+      "opis": "Opis badania 6",
+      "uczestnicy": []
+    },
+    {
+      "id": 7,
+      "nazwa": "Badanie 7",
+      "opis": "Opis badania 7",
+      "uczestnicy": []
+    },
+    {
+      "id": 8,
+      "nazwa": "Badanie 8",
+      "opis": "Opis badania 8",
+      "uczestnicy": []
+    },
+    {
+      "id": 9,
+      "nazwa": "Badanie 9",
+      "opis": "Opis badania 9",
+      "uczestnicy": []
+    },
+    {
+      "id": 10,
+      "nazwa": "Badanie 10",
+      "opis": "Opis badania 10",
+      "uczestnicy": []
+    },
+    {
+      "id": 11,
+      "nazwa": "Badanie 11",
+      "opis": "Opis badania 11",
+      "uczestnicy": []
     }
   ],
   "zlecenia": [
@@ -180,11 +263,11 @@
       "pacjentId": 1,
       "projektId": 1,
       "dataZlecenia": "2023-03-22",
-      "status": "oczekujące3",
+      "status": "oczekujące",
       "badania": [
         {
           "nazwa": "Badanie krwi",
-          "wynik": "W normie2"
+          "wynik": "W normie"
         },
         {
           "nazwa": "Badanie EKG",
@@ -192,11 +275,7 @@
         },
         {
           "nazwa": "Badanie RTG",
-          "wynik": "Słabe"
-        },
-        {
-          "nazwa": "sss",
-          "wynik": "sss"
+          "wynik": "W normie"
         }
       ]
     },
@@ -239,20 +318,47 @@
       "id": 4
     },
     {
-      "pacjentId": 1,
-      "projektId": 1,
-      "dataZlecenia": "27-03-2023",
-      "status": "rozpoczęte",
-      "badania": [],
-      "id": 5
+      "id": 5,
+      "pacjentId": 3,
+      "projektId": 2,
+      "dataZlecenia": "2023-03-24",
+      "status": "oczekujące",
+      "badania": [
+        {
+          "nazwa": "Badanie USG",
+          "wynik": ""
+        },
+        {
+          "nazwa": "Badanie krwi",
+          "wynik": ""
+        }
+      ]
     },
     {
-      "pacjentId": 1,
+      "id": 6,
+      "pacjentId": 4,
       "projektId": 1,
-      "dataZlecenia": "27-03-2023",
+      "dataZlecenia": "2023-03-25",
       "status": "rozpoczęte",
-      "badania": [],
-      "id": 6
+      "badania": [
+        {
+          "nazwa": "Badanie morfologii",
+          "wynik": ""
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "pacjentId": 7,
+      "projektId": 3,
+      "dataZlecenia": "2023-03-26",
+      "status": "oczekujące",
+      "badania": [
+        {
+          "nazwa": "Badanie USG",
+          "wynik": ""
+        }
+      ]
     }
   ]
 }

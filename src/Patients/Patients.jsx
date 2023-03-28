@@ -12,7 +12,6 @@ const Patients = () => {
   const [showFind, setshowFind] = useState(false);
   const [showAdd, setshowAdd] = useState(false);
 
-  //wczytanie pacjentow przy mountingu komponentu
   const updatePatientsList = () => {
     getPatients()
       .then((data) => {
@@ -23,6 +22,8 @@ const Patients = () => {
         console.error("Błąd podczas pobierania pacjentów:", error);
       });
   };
+
+  //wczytanie pacjentow przy mountingu komponentu
   useEffect(() => {
     updatePatientsList();
   }, []);
@@ -40,6 +41,7 @@ const Patients = () => {
       setFilteredPatients(patients);
     }
   }, [findSurname, patients]);
+
   return (
     <main>
       <div className="buttons">

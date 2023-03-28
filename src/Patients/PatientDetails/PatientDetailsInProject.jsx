@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { deleteOrder, getOrders, updateOrder } from "../../server";
+import {
+  deleteOrder,
+  getOrders,
+  getSinglePatient,
+  updateOrder,
+} from "../../server";
 import AddOrder from "./AddOrder";
 import AddTest from "./AddTest";
 import EditOrder from "./EditOrder";
@@ -8,6 +13,7 @@ import EditResult from "./EditResult";
 
 const PatientDetailsInProject = () => {
   const [patientOrders, setPatientOrders] = useState([]);
+  const [patient, setPatient] = useState({});
   const [showAdd, setShowAdd] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [showResult, setShowResult] = useState(false);
@@ -24,7 +30,8 @@ const PatientDetailsInProject = () => {
     nazwa: "",
     wynik: "",
   });
-
+  const [sortColumn, setSortColumn] = useState("id");
+  const [sortOrder, setSortOrder] = useState("asc");
   const { idPatient, idProject } = useParams();
   const updateOrdersList = () => {
     getOrders().then((data) => {
@@ -35,10 +42,13 @@ const PatientDetailsInProject = () => {
       );
       setPatientOrders(allPatientOrders);
     });
+    getSinglePatient(idPatient).then((data) => {
+      setPatient(data);
+    });
   };
   useEffect(() => {
     updateOrdersList();
-  }, [idPatient, idProject]);
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -46,6 +56,8 @@ const PatientDetailsInProject = () => {
   const handleChangeTest = (e) => {
     setTestFormData({ ...testFormData, [e.target.name]: e.target.value });
   };
+
+  //zapisanie danych zlecenia, by pozniej moc wyslac puta ze zmiana
   const handleEdit = (order) => {
     setFormData({
       id: order.id,
@@ -57,6 +69,8 @@ const PatientDetailsInProject = () => {
     });
     setShowEdit(!showEdit);
   };
+
+  //wyslanie zmienione zlecenia na serwer
   const handleSubmit = async (e) => {
     e.preventDefault();
     const updatedOrder = {
@@ -67,7 +81,6 @@ const PatientDetailsInProject = () => {
       status: formData.status,
       badania: formData.badania,
     };
-    console.log(updatedOrder.id);
     const updatedOrdertData = await updateOrder(updatedOrder);
     setPatientOrders(
       patientOrders.map((p) =>
@@ -96,6 +109,7 @@ const PatientDetailsInProject = () => {
     });
     setTestFormData({ nazwa: result.nazwa, wynik: result.wynik });
   };
+
   const handleAdd = (order) => {
     setFormData({
       id: order.id,
@@ -106,6 +120,15 @@ const PatientDetailsInProject = () => {
       badania: order.badania,
     });
   };
+
+  const handleDelete = (order) => {
+    if (order.status !== "zakończone") {
+      deleteOrder(order.id).then(() => {
+        setPatientOrders(patientOrders.filter((o) => o.id !== order.id));
+      });
+    }
+  };
+
   const handleSubmitTest = async (e) => {
     e.preventDefault();
     const updatedOrder = {
@@ -151,10 +174,8 @@ const PatientDetailsInProject = () => {
       status: formData.status,
       badania: formData.badania,
     };
-    console.log(updatedOrder);
 
     updatedOrder.badania.push(testFormData);
-    console.log(updatedOrder);
     const updatedOrdertData = await updateOrder(updatedOrder);
     setPatientOrders(
       patientOrders.map((p) =>
@@ -175,13 +196,6 @@ const PatientDetailsInProject = () => {
     });
     setShowAddTest(false);
   };
-  const handleDelete = (order) => {
-    if (order.status !== "zakończone") {
-      deleteOrder(order.id).then(() => {
-        setPatientOrders(patientOrders.filter((o) => o.id !== order.id));
-      });
-    }
-  };
   const handleDeleteTest = async (order, test) => {
     const updatedOrder = order;
     const updatedTests = updatedOrder.badania.filter(
@@ -195,10 +209,29 @@ const PatientDetailsInProject = () => {
       )
     );
   };
+  const sortData = (column) => {
+    const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
+    const sortedData = [...patientOrders].sort((a, b) => {
+      if (a[column] < b[column]) {
+        return sortOrder === "asc" ? -1 : 1;
+      }
+      if (a[column] > b[column]) {
+        return sortOrder === "asc" ? 1 : -1;
+      }
+      return 0;
+    });
+
+    setPatientOrders(sortedData);
+    setSortColumn(column);
+    setSortOrder(newSortOrder);
+  };
 
   return (
     <main>
-      <h1>Lista zleceń</h1>
+      <h1 className="order-title">Lista zleceń</h1>
+      <h2 className="order-title">
+        {patient.imie} {patient.nazwisko}
+      </h2>
       <button
         className="button-add"
         onClick={() => {
@@ -248,9 +281,18 @@ const PatientDetailsInProject = () => {
         <table>
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Data</th>
-              <th>Status</th>
+              <th onClick={() => sortData("id")}>
+                Id {sortColumn === "id" && (sortOrder === "asc" ? "▲" : "▼")}
+              </th>
+              <th onClick={() => sortData("dataZlecenia")}>
+                Data{" "}
+                {sortColumn === "dataZlecenia" &&
+                  (sortOrder === "asc" ? "▲" : "▼")}
+              </th>
+              <th onClick={() => sortData("status")}>
+                Status{" "}
+                {sortColumn === "status" && (sortOrder === "asc" ? "▲" : "▼")}
+              </th>
               <th>Badania</th>
               <th>Wynik</th>
               <th></th>
@@ -262,8 +304,8 @@ const PatientDetailsInProject = () => {
                 <td>{order.id}</td>
                 <td>{order.dataZlecenia}</td>
                 <td>{order.status}</td>
-                <td>
-                  <ul>
+                <td className="tests">
+                  <ol>
                     {order.badania[0]
                       ? order.badania.map((test) => (
                           <li key={test.nazwa}>
@@ -279,7 +321,7 @@ const PatientDetailsInProject = () => {
                           </li>
                         ))
                       : ""}
-                  </ul>
+                  </ol>
                   <button
                     onClick={() => {
                       setShowAddTest(!showAddTest);
@@ -291,11 +333,12 @@ const PatientDetailsInProject = () => {
                   </button>
                 </td>
                 <td>
-                  <ul>
+                  <ol>
                     {order.badania[0]
                       ? order.badania.map((test) => (
                           <li key={test.nazwa}>
                             <div
+                              className="research"
                               onClick={() => {
                                 setShowResult(!showResult);
                                 handleResult(test, order);
@@ -306,7 +349,7 @@ const PatientDetailsInProject = () => {
                           </li>
                         ))
                       : ""}
-                  </ul>
+                  </ol>
                 </td>
                 <td className="buttons-table">
                   <button
